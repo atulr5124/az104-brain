@@ -1,0 +1,64 @@
+{
+  "topic": "Azure Virtual Machines",
+  "summary": "Azure Virtual Machines (VMs) are on-demand, scalable compute resources that give you full control over the computing environment without managing physical hardware. You are responsible for maintaining the VM including patching, configuration, and software installation. VMs are billed based on size, OS, and associated resources like disks, NICs, and public IPs.",
+  "key_concepts": [
+    {
+      "concept": "VM Size",
+      "explanation": "Determines CPU, memory, storage, and network bandwidth. Chosen based on workload requirements and affects hourly pricing."
+    },
+    {
+      "concept": "Availability Zones",
+      "explanation": "Physically separated zones within an Azure region. Deploying VMs across 2+ zones guarantees 99.99% connectivity SLA."
+    },
+    {
+      "concept": "Virtual Machine Scale Sets (VMSS)",
+      "explanation": "Group of load-balanced VMs that auto-scales in or out based on demand or schedule. Supports deployment across availability zones."
+    },
+    {
+      "concept": "Managed Disks",
+      "explanation": "OS disk (usually 127 GiB) and optional data disks attached to VMs. Best practice is to keep data on a separate disk from the OS."
+    },
+    {
+      "concept": "Network Security Group (NSG)",
+      "explanation": "Controls inbound and outbound traffic to the VM by allowing or blocking ports. No additional charge for NSGs."
+    },
+    {
+      "concept": "Azure Hybrid Benefit",
+      "explanation": "Licensing benefit that lets you use existing on-premises Windows Server or SQL Server licenses on Azure VMs to reduce OS licensing costs."
+    },
+    {
+      "concept": "Trusted Launch",
+      "explanation": "Security feature for Generation 2 VMs that enables Secure Boot and vTPM. Becoming the default for new Gen2 VMs."
+    },
+    {
+      "concept": "Core Quota Limits",
+      "explanation": "Default limit of 20 total VM cores per subscription per region. Can be increased via a support ticket."
+    }
+  ],
+  "exam_focus_points": [
+    "Default core quota limit is 20 cores per subscription per region \u2014 quota and capacity are checked separately at deployment",
+    "Availability Zones guarantee 99.99% SLA only when 2+ instances are deployed across 2+ zones in the same region",
+    "NICs have no separate cost but the count is limited by VM size",
+    "Azure does NOT charge for local (temporary) disk storage, but OS disk and data disks are charged",
+    "VM pricing is hourly; partial hours are billed by the minute",
+    "Storage is priced and charged separately from the VM compute cost",
+    "Virtual Machine Scale Sets support both manual and automatic scaling and can span availability zones",
+    "Azure Hybrid Benefit can reduce OS licensing costs for Windows VMs",
+    "Trusted Launch with Secure Boot and vTPM is the default for new Generation 2 VMs (preview)"
+  ],
+  "similar_concepts": [
+    "Azure App Service (PaaS compute vs IaaS VM)",
+    "Azure Container Instances (serverless containers vs full VM control)",
+    "Virtual Machine Scale Sets (auto-scaling group built on VMs)",
+    "Azure Kubernetes Service (container orchestration vs raw VMs)",
+    "Availability Sets (older fault/update domain grouping vs Availability Zones)"
+  ],
+  "common_mistakes": [
+    "Confusing Availability Sets (fault/update domains) with Availability Zones \u2014 only Zones guarantee the 99.99% SLA",
+    "Forgetting that quota approval does not guarantee capacity \u2014 deployment can still fail if regional capacity is insufficient",
+    "Assuming local/temporary disk storage is persistent \u2014 it is ephemeral and lost on deallocation",
+    "Thinking NICs are free and unlimited \u2014 while there is no per-NIC charge, the maximum NIC count is constrained by VM size",
+    "Overlooking that OS disk, data disks, public IPs, and VNet are billed separately from the VM compute cost",
+    "Assuming all VM sizes are available in all regions \u2014 size availability varies by region"
+  ]
+}

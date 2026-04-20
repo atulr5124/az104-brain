@@ -1,0 +1,72 @@
+{
+  "topic": "Azure Kubernetes Service",
+  "summary": "Azure Kubernetes Service (AKS) is a managed Kubernetes service that handles the complexity of container orchestration by offloading control plane management to Azure at no cost. You only pay for the worker nodes running your applications. It supports high availability, scalability, and integrates with Azure identity, monitoring, and networking services.",
+  "key_concepts": [
+    {
+      "concept": "Managed Control Plane",
+      "explanation": "Azure automatically creates and manages the Kubernetes control plane for free \u2014 you only pay for the agent/worker nodes where your workloads run."
+    },
+    {
+      "concept": "Node Pools",
+      "explanation": "Logical groupings of VMs within a cluster; AKS supports multiple node pools, enabling mixed OS environments (Linux and Windows Server containers)."
+    },
+    {
+      "concept": "Cluster Autoscaler",
+      "explanation": "Automatically scales the number of nodes in a node pool based on resource demand, so the cluster grows and shrinks as workloads change."
+    },
+    {
+      "concept": "Horizontal Pod Autoscaler (HPA)",
+      "explanation": "Scales the number of pod replicas within a deployment based on CPU/memory metrics or custom metrics."
+    },
+    {
+      "concept": "KEDA",
+      "explanation": "Kubernetes Event Driven Autoscaler \u2014 scales workloads based on external event sources like queues or topics, beyond basic CPU/memory triggers."
+    },
+    {
+      "concept": "Virtual Nodes / ACI Bursting",
+      "explanation": "Allows AKS to burst pod workloads into Azure Container Instances for near-instant scaling without pre-provisioned nodes."
+    },
+    {
+      "concept": "CSI Drivers",
+      "explanation": "Container Storage Interface drivers for Azure Disks (single pod, ReadWriteOnce) and Azure Files (multiple concurrent pods, ReadWriteMany) provide persistent storage."
+    },
+    {
+      "concept": "Microsoft Entra ID Integration",
+      "explanation": "AKS integrates with Entra ID (formerly Azure AD) for Kubernetes RBAC, letting you control cluster access using existing identities and group memberships."
+    },
+    {
+      "concept": "Container Insights",
+      "explanation": "An Azure Monitor feature that monitors AKS cluster and containerized application health and performance."
+    },
+    {
+      "concept": "AKS Automatic",
+      "explanation": "A fully managed AKS mode with production-ready defaults, built-in security, and a 99.9% pod readiness SLA within 5 minutes during scale-ups."
+    }
+  ],
+  "exam_focus_points": [
+    "AKS control plane is managed by Azure at no cost; you pay only for worker nodes.",
+    "Azure Disks CSI driver = single pod access (ReadWriteOnce); Azure Files CSI driver = multiple concurrent pod access (ReadWriteMany).",
+    "Microsoft Entra ID integrates with Kubernetes RBAC for identity-based cluster access control.",
+    "Cluster autoscaler scales nodes; Horizontal Pod Autoscaler scales pods \u2014 knowing which layer each operates on.",
+    "Virtual nodes enable bursting to Azure Container Instances (ACI) for rapid, serverless pod scaling.",
+    "AKS is CNCF-certified and compliant with SOC, ISO, PCI DSS, and HIPAA.",
+    "Container Insights (Azure Monitor) is the primary monitoring integration for AKS clusters.",
+    "Azure Policy can enforce regulatory compliance controls on AKS clusters.",
+    "Node pools support mixed OS \u2014 Linux and Windows Server containers in the same cluster."
+  ],
+  "similar_concepts": [
+    "Azure Container Instances (ACI)",
+    "Azure Container Apps",
+    "Azure Red Hat OpenShift",
+    "Azure Arc-enabled Kubernetes",
+    "Azure App Service (for containerized web apps)"
+  ],
+  "common_mistakes": [
+    "Thinking you pay for the control plane \u2014 Azure manages and hosts it for free; costs are only for worker nodes.",
+    "Confusing Azure Disks (single pod, RWO) with Azure Files (multi-pod, RWX) for persistent storage use cases.",
+    "Confusing AKS with Azure Container Instances \u2014 ACI is for single, isolated containers without orchestration; AKS is full Kubernetes.",
+    "Confusing Cluster Autoscaler (scales nodes) with Horizontal Pod Autoscaler (scales pod replicas within nodes).",
+    "Assuming AKS Automatic and standard AKS are the same \u2014 Automatic adds production-ready defaults and a pod readiness SLA.",
+    "Overlooking that Azure Arc-enabled Kubernetes is unmanaged, while AKS and Azure Container Apps are managed Kubernetes offerings."
+  ]
+}

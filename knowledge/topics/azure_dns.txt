@@ -1,0 +1,112 @@
+Table of contents
+Exit editor mode
+Ask Learn
+Ask Learn
+Reading mode
+Table of contents
+Read in English
+Add
+Add to plan
+Edit
+Share via
+Facebook
+x.com
+LinkedIn
+Email
+Copy Markdown
+Print
+Note
+Access to this page requires authorization. You can try
+signing in
+or
+changing directories
+.
+Access to this page requires authorization. You can try
+changing directories
+.
+Azure DNS overview
+Feedback
+Summarize this article for me
+The Domain Name System (DNS) translates (resolves) a service name to an IP address. Azure DNS provides DNS hosting, resolution, and load balancing for your applications by using the Microsoft Azure infrastructure.
+Azure DNS supports both internet-facing DNS domains and private DNS zones. It provides the following services:
+Azure Public DNS
+is a hosting service for DNS domains. By hosting your domains in Azure, you can manage your DNS records by using the same credentials, APIs, tools, and billing as your other Azure services.
+Azure Private DNS
+is a DNS service for your virtual networks. Azure Private DNS manages and resolves domain names in the virtual network without the need to configure a custom DNS solution.
+Azure DNS Private Resolver
+is a service that enables you to query Azure DNS private zones from an on-premises environment and vice versa without deploying VM based DNS servers.
+Azure Traffic Manager
+is a DNS-based traffic load balancer. This service allows you to distribute traffic to your public facing applications across the global Azure regions.
+DNS Security Policy
+offers the ability to filter and log DNS queries at the virtual network level. It also includes a Threat Intelligence feed which allows early detection and prevention of security incidents on your Virtual Networks where known malicious domains sourced by
+Microsoft's Security Response Center (MSRC)
+can be blocked from name resolution.
+Azure DNS enables multiple scenarios, including:
+Host and resolve public domains
+Manage DNS resolution in your virtual networks
+Enable autoregistration for VMs
+Enable name resolution between Azure and your on-premises resources
+Secure hybrid networking
+Monitor DNS metrics and alerts
+Integrate with your other Azure services
+Perform Private Link and DNS integration at scale
+Protect your
+public
+and
+private
+DNS zones and records
+Enable automatic
+fault tolerance
+and
+failover
+for DNS resolution
+Load-balance your applications
+Increase application
+availability
+and
+performance
+Monitor your application traffic patterns
+Secure and view DNS traffic
+Note
+Azure DNS is one of the services that make up the Network Foundations category in Azure. Other services in this category include
+Azure Virtual Networks
+and
+Azure Private Link
+. Each service has its own unique features and use cases. For more information on this service category, see
+Network Foundations
+.
+Next steps
+To learn about Public DNS zones and records, see
+DNS zones and records overview
+.
+To learn about Private DNS zones, see
+What is an Azure Private DNS zone
+.
+To learn about private resolver endpoints and rulesets, see
+Azure DNS Private Resolver endpoints and rulesets
+.
+For frequently asked questions about Azure DNS, see
+Azure DNS FAQ
+.
+For frequently asked questions about Azure Private DNS, see
+Azure Private DNS FAQ
+.
+For frequently asked questions about Traffic Manager, see
+Traffic Manager routing methods
+.
+Also see
+Learn module: Introduction to Azure DNS
+.
+Feedback
+Was this page helpful?
+Yes
+No
+No
+Need help with this topic?
+Want to try using Ask Learn to clarify or guide you through this topic?
+Ask Learn
+Ask Learn
+Suggest a fix?
+Additional resources
+Last updated on
+2025-12-16

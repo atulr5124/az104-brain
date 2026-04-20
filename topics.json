@@ -1,0 +1,44 @@
+{
+  "topics": [
+    {
+      "name": "Azure Load Balancer",
+      "url": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview"
+    },
+    {
+      "name": "Azure VPN Gateway",
+      "url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways"
+    },
+    {
+      "name": "Azure Monitor",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview"
+    },
+    {
+      "name": "Azure Backup",
+      "url": "https://learn.microsoft.com/en-us/azure/backup/backup-overview"
+    },
+    {
+      "name": "Azure Policy",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+    },
+    {
+      "name": "Azure App Service",
+      "url": "https://learn.microsoft.com/en-us/azure/app-service/overview"
+    },
+    {
+      "name": "Azure Kubernetes Service",
+      "url": "https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes"
+    },
+    {
+      "name": "Azure DNS",
+      "url": "https://learn.microsoft.com/en-us/azure/dns/dns-overview"
+    },
+    {
+      "name": "Azure Key Vault",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+    },
+    {
+      "name": "Azure Virtual Machines",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/overview"
+    }
+  ]
+}

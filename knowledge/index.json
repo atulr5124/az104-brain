@@ -35,7 +35,67 @@
       "name": "Azure Storage Accounts",
       "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview",
       "ingested_at": "2026-04-20T12:18:18.735170"
+    },
+    {
+      "id": "azure_load_balancer",
+      "name": "Azure Load Balancer",
+      "url": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview",
+      "ingested_at": "2026-04-20T12:51:15.852497"
+    },
+    {
+      "id": "azure_vpn_gateway",
+      "name": "Azure VPN Gateway",
+      "url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+      "ingested_at": "2026-04-20T12:51:52.209656"
+    },
+    {
+      "id": "azure_monitor",
+      "name": "Azure Monitor",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+      "ingested_at": "2026-04-20T12:52:24.445375"
+    },
+    {
+      "id": "azure_backup",
+      "name": "Azure Backup",
+      "url": "https://learn.microsoft.com/en-us/azure/backup/backup-overview",
+      "ingested_at": "2026-04-20T12:52:49.146611"
+    },
+    {
+      "id": "azure_policy",
+      "name": "Azure Policy",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+      "ingested_at": "2026-04-20T12:53:29.607040"
+    },
+    {
+      "id": "azure_dns",
+      "name": "Azure DNS",
+      "url": "https://learn.microsoft.com/en-us/azure/dns/dns-overview",
+      "ingested_at": "2026-04-20T16:15:43.101020"
+    },
+    {
+      "id": "azure_key_vault",
+      "name": "Azure Key Vault",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+      "ingested_at": "2026-04-20T16:15:48.166518"
+    },
+    {
+      "id": "azure_virtual_machines",
+      "name": "Azure Virtual Machines",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/overview",
+      "ingested_at": "2026-04-20T16:15:48.395320"
+    },
+    {
+      "id": "azure_kubernetes_service",
+      "name": "Azure Kubernetes Service",
+      "url": "https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes",
+      "ingested_at": "2026-04-20T16:15:49.571115"
+    },
+    {
+      "id": "azure_app_service",
+      "name": "Azure App Service",
+      "url": "https://learn.microsoft.com/en-us/azure/app-service/overview",
+      "ingested_at": "2026-04-20T16:15:54.753047"
     }
   ],
-  "last_updated": "2026-04-20T12:18:18.736034"
+  "last_updated": "2026-04-20T16:15:54.753174"
 }

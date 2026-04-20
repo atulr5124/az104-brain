@@ -1,0 +1,56 @@
+{
+  "topic": "Azure Key Vault",
+  "summary": "Azure Key Vault is a managed cloud service for securely storing and controlling access to secrets, encryption keys, and TLS/SSL certificates. It offers two tiers: Standard (software-based FIPS 140 Level 1) and Premium (HSM-backed FIPS 140-3 Level 3). It integrates with Microsoft Entra ID for authentication and supports Azure RBAC or Key Vault access policies for authorization.",
+  "key_concepts": [
+    {
+      "concept": "Secrets Management",
+      "explanation": "Securely stores tokens, passwords, API keys, and connection strings so applications retrieve them via URI rather than hardcoding them."
+    },
+    {
+      "concept": "Key Management",
+      "explanation": "Creates and controls encryption keys used to encrypt data, with optional HSM protection in the Premium tier."
+    },
+    {
+      "concept": "Certificate Management",
+      "explanation": "Provisions, manages, and auto-renews public/private TLS/SSL certificates for Azure and internal resources."
+    },
+    {
+      "concept": "Service Tiers",
+      "explanation": "Standard uses software-based FIPS 140 Level 1 encryption; Premium uses hardware HSMs validated to FIPS 140-3 Level 3 for the highest cryptographic protection."
+    },
+    {
+      "concept": "Access Control",
+      "explanation": "Authentication via Microsoft Entra ID; authorization via Azure RBAC (management and data plane) or Key Vault access policies (data plane only)."
+    },
+    {
+      "concept": "Logging and Monitoring",
+      "explanation": "Key Vault access logs can be archived to a storage account, streamed to an Event Hub, or sent to Azure Monitor Logs."
+    },
+    {
+      "concept": "High Availability",
+      "explanation": "Key Vault contents are replicated within a region and to a secondary region automatically, with no admin action needed for failover."
+    }
+  ],
+  "exam_focus_points": [
+    "Difference between Azure RBAC and Key Vault access policies: RBAC covers both management and data plane; access policies cover data plane only",
+    "Standard tier uses FIPS 140 Level 1 (software); Premium tier uses FIPS 140-3 Level 3 (HSM-backed)",
+    "Authentication to Key Vault is via Microsoft Entra ID",
+    "Key Vault logging destinations: Storage Account, Event Hub, Azure Monitor Logs",
+    "Key Vault integrates with Azure Disk Encryption, Azure SQL TDE/Always Encrypted, and Azure App Service",
+    "Secrets are accessed via URI, including specific version retrieval",
+    "Key Vault replicates data to a secondary region for HA without admin intervention"
+  ],
+  "similar_concepts": [
+    "Azure Managed HSM",
+    "Azure Dedicated HSM",
+    "Azure App Configuration (for non-secret config)",
+    "Microsoft Entra ID (identity vs. secret management confusion)"
+  ],
+  "common_mistakes": [
+    "Confusing Key Vault access policies with Azure RBAC \u2014 policies only control data plane access, not management plane",
+    "Thinking Standard tier uses HSMs \u2014 it uses software-based cryptography; only Premium tier has HSM-protected keys",
+    "Assuming Microsoft can access your keys \u2014 Key Vault is designed so Microsoft cannot see or extract stored data",
+    "Forgetting that each application should have its own Key Vault for proper secret segregation",
+    "Mixing up Key Vault (secrets/keys/certs store) with Azure Managed HSM (dedicated single-tenant HSM service)"
+  ]
+}

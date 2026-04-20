@@ -1,0 +1,51 @@
+{
+  "topic": "Azure DNS",
+  "summary": "Azure DNS is Microsoft's cloud-based DNS hosting and resolution service that translates domain names to IP addresses using Azure infrastructure. It supports both public internet-facing DNS domains and private DNS zones within virtual networks. It also includes traffic load balancing, security policy filtering, and hybrid on-premises integration via the DNS Private Resolver.",
+  "key_concepts": [
+    {
+      "concept": "Azure Public DNS",
+      "explanation": "A hosting service for internet-facing DNS domains, letting you manage DNS records using the same Azure tools, credentials, and billing as other Azure resources."
+    },
+    {
+      "concept": "Azure Private DNS",
+      "explanation": "A DNS service scoped to your virtual networks that resolves domain names internally without requiring a custom DNS server VM."
+    },
+    {
+      "concept": "Azure DNS Private Resolver",
+      "explanation": "A managed service that allows on-premises networks to query Azure Private DNS zones (and vice versa) without deploying VM-based DNS servers."
+    },
+    {
+      "concept": "Azure Traffic Manager",
+      "explanation": "A DNS-based load balancer that distributes traffic across global Azure regions for public-facing applications."
+    },
+    {
+      "concept": "DNS Security Policy",
+      "explanation": "Filters and logs DNS queries at the virtual network level and blocks known malicious domains using Microsoft's threat intelligence feed (MSRC)."
+    },
+    {
+      "concept": "Autoregistration",
+      "explanation": "A feature of Azure Private DNS that automatically registers DNS records for VMs in a linked virtual network."
+    }
+  ],
+  "exam_focus_points": [
+    "Azure Public DNS hosts internet-facing domains; Azure Private DNS handles name resolution within virtual networks",
+    "Azure DNS Private Resolver enables hybrid DNS resolution between on-premises and Azure without VM-based DNS servers",
+    "Traffic Manager is DNS-based and operates at the global level for load balancing public applications",
+    "Private DNS zones support autoregistration of VM hostnames in linked virtual networks",
+    "DNS Security Policy filters queries using Microsoft threat intelligence and operates at the virtual network level",
+    "Azure DNS does not register domain names \u2014 it only hosts and resolves them; you must purchase domains separately"
+  ],
+  "similar_concepts": [
+    "Azure Traffic Manager (DNS-based load balancing vs. DNS hosting)",
+    "Azure Private Link (often integrated with Private DNS but serves a different purpose)",
+    "Custom DNS servers on VMs (replaced by Azure DNS Private Resolver in hybrid scenarios)",
+    "Azure Front Door (application-layer load balancing vs. DNS-layer)"
+  ],
+  "common_mistakes": [
+    "Confusing Azure DNS (hosting/resolution) with domain registration \u2014 Azure DNS does not sell or register domain names",
+    "Using VM-based DNS forwarders for hybrid resolution instead of the managed Azure DNS Private Resolver",
+    "Confusing Azure Private DNS (VNet-scoped resolution) with Azure Public DNS (internet-facing)",
+    "Assuming Traffic Manager is a network load balancer \u2014 it is DNS-based and works at the DNS query level, not the packet level",
+    "Forgetting that Private DNS zones must be linked to a virtual network before resolution or autoregistration works"
+  ]
+}

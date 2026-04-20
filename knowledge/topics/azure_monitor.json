@@ -1,0 +1,67 @@
+{
+  "topic": "Azure Monitor",
+  "summary": "Azure Monitor is Microsoft's unified observability service that collects, analyzes, and acts on telemetry (metrics, logs, traces, events) from Azure and hybrid environments. It brings together data from all Azure resources into a centralized platform supporting tools like Log Analytics, Application Insights, and alerting. It enables monitoring of applications, infrastructure, networks, and AI agents from a single service.",
+  "key_concepts": [
+    {
+      "concept": "Log Analytics Workspace",
+      "explanation": "A centralized repository that stores log and trace data from Azure resources, queried using Kusto Query Language (KQL)"
+    },
+    {
+      "concept": "Application Insights",
+      "explanation": "An Azure Monitor feature providing application performance monitoring (APM) for live web applications using OpenTelemetry"
+    },
+    {
+      "concept": "Metrics vs Logs",
+      "explanation": "Metrics are numerical time-series data stored in Azure Monitor workspaces (queried with PromQL); logs are structured records stored in Log Analytics workspaces (queried with KQL)"
+    },
+    {
+      "concept": "Alerts",
+      "explanation": "Proactive notifications triggered when collected data meets defined conditions, with AIOps features like dynamic thresholds and smart alerts"
+    },
+    {
+      "concept": "Autoscale",
+      "explanation": "An Azure Monitor feature that automatically adds or removes resources based on application load"
+    },
+    {
+      "concept": "Data Collection Rules (DCR)",
+      "explanation": "Configuration objects that define what telemetry to collect from which sources and where to send it"
+    },
+    {
+      "concept": "Azure Monitor Workbooks",
+      "explanation": "Interactive reports in the Azure portal that visualize monitoring data with prebuilt or custom layouts"
+    },
+    {
+      "concept": "Azure Network Watcher",
+      "explanation": "A suite of tools built on the Azure Monitor data platform for monitoring network health"
+    },
+    {
+      "concept": "Hybrid Monitoring",
+      "explanation": "Azure Monitor can monitor non-Azure resources via Azure Arc, extending to other clouds and on-premises environments"
+    }
+  ],
+  "exam_focus_points": [
+    "Know that Log Analytics uses KQL (Kusto Query Language) and Azure Monitor workspaces use PromQL for Prometheus metrics",
+    "Understand that Application Insights is a feature of Azure Monitor, not a separate service",
+    "Know when to use Alerts vs Autoscale: Alerts notify humans, Autoscale automatically adjusts resources",
+    "Understand Data Collection Rules (DCRs) as the mechanism to control what data is collected and where it goes",
+    "Know that Log Analytics workspaces store logs/traces, while Azure Monitor workspaces store Prometheus/OpenTelemetry metrics",
+    "Azure Monitor supports hybrid environments via Azure Arc integration",
+    "Diagnostic settings must be configured on individual resources to send logs/metrics to Log Analytics",
+    "Know the difference between metric alerts (near real-time) and log alerts (query-based, slight delay)"
+  ],
+  "similar_concepts": [
+    "Log Analytics Workspace vs Azure Monitor Workspace",
+    "Application Insights vs Azure Monitor",
+    "Azure Monitor Alerts vs Azure Service Health Alerts",
+    "Diagnostic Settings vs Data Collection Rules",
+    "Azure Monitor vs Microsoft Defender for Cloud"
+  ],
+  "common_mistakes": [
+    "Confusing Log Analytics Workspace (for logs, uses KQL) with Azure Monitor Workspace (for Prometheus metrics, uses PromQL)",
+    "Assuming Azure Monitor only works with Azure resources \u2014 it also supports hybrid and multi-cloud via Azure Arc",
+    "Thinking Application Insights is separate from Azure Monitor \u2014 it is a feature within Azure Monitor",
+    "Forgetting that diagnostic settings must be explicitly enabled on each resource; monitoring is not automatic",
+    "Confusing Autoscale (adjusts resource count automatically) with Alerts (sends notifications to humans)",
+    "Assuming all Azure Monitor data is queryable with KQL \u2014 Prometheus metrics require PromQL"
+  ]
+}

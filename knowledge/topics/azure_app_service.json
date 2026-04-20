@@ -1,0 +1,66 @@
+{
+  "topic": "Azure App Service",
+  "summary": "Azure App Service is a fully managed platform-as-a-service (PaaS) for hosting web applications, mobile backends, and RESTful APIs without managing underlying infrastructure. It supports multiple languages and runtimes (.NET, Java, Node.js, Python, PHP) on both Windows and Linux, and also supports custom containers. It handles scaling, patching, and reliability automatically.",
+  "key_concepts": [
+    {
+      "concept": "App Service Plan",
+      "explanation": "The compute resources (VMs) that your App Service app runs on. Defines the region, number of VM instances, and pricing tier (Free, Shared, Basic, Standard, Premium, Isolated)."
+    },
+    {
+      "concept": "Deployment Slots",
+      "explanation": "Separate live environments (e.g., staging, production) within the same App Service app, allowing you to deploy and warm up apps before swapping them into production."
+    },
+    {
+      "concept": "Scaling",
+      "explanation": "App Service supports both scale up (moving to a higher pricing tier with more CPU/RAM) and scale out (adding more VM instances), with autoscale support based on demand."
+    },
+    {
+      "concept": "App Service Environment (ASE)",
+      "explanation": "A fully isolated, dedicated environment for running App Service apps at high scale with complete network isolation inside an Azure Virtual Network."
+    },
+    {
+      "concept": "VNet Integration",
+      "explanation": "Allows App Service apps to access resources inside an Azure Virtual Network, enabling secure communication with backend services without exposing them publicly."
+    },
+    {
+      "concept": "Managed Certificates",
+      "explanation": "App Service can provision and renew free TLS/SSL certificates automatically for custom domains, removing the need to manage certificates manually."
+    },
+    {
+      "concept": "Built-in Authentication",
+      "explanation": "App Service provides turn-key authentication and authorization (Easy Auth) supporting providers like Microsoft Entra ID, Google, Facebook, and X without writing auth code."
+    },
+    {
+      "concept": "Managed Instance (Preview)",
+      "explanation": "A plan-scoped isolation feature for legacy Windows apps requiring COM, registry access, MSI, or drive mapping \u2014 not available for Linux or containers."
+    }
+  ],
+  "exam_focus_points": [
+    "Difference between scale up (vertical) and scale out (horizontal) and when to use each",
+    "App Service Plan tiers: Free, Shared, Basic, Standard, Premium, Isolated \u2014 what features each unlocks (e.g., custom domains require Basic+, deployment slots require Standard+)",
+    "Deployment slots: how slot swapping works, sticky settings vs. swapped settings",
+    "When to use App Service vs. App Service Environment (ASE) vs. Azure Container Apps vs. Azure Functions",
+    "VNet Integration vs. Private Endpoints \u2014 VNet Integration is for outbound, Private Endpoints are for inbound",
+    "Supported runtimes: .NET, Java (SE/Tomcat/JBoss), Node.js, Python, PHP on Windows and Linux",
+    "Built-in authentication (Easy Auth) supports Entra ID, Google, Facebook, X \u2014 no code changes needed",
+    "Autoscaling rules: metric-based (CPU, memory, HTTP queue) and schedule-based scaling",
+    "App Service Plan sharing: multiple apps can share one plan and consume its resources",
+    "CI/CD integration with GitHub Actions and Azure Pipelines via deployment center"
+  ],
+  "similar_concepts": [
+    "Azure Functions (serverless compute, consumption-based, event-driven vs. always-on App Service)",
+    "Azure Container Apps (managed Kubernetes-based container hosting vs. App Service containers)",
+    "Azure Kubernetes Service (full container orchestration vs. managed PaaS hosting)",
+    "Azure Static Web Apps (for purely static frontends vs. full dynamic app hosting)",
+    "Azure Cloud Services (legacy PaaS offering, predates App Service)"
+  ],
+  "common_mistakes": [
+    "Confusing scale up (changing App Service Plan tier/size) with scale out (adding more instances) \u2014 exam questions often test which is appropriate",
+    "Thinking deployment slots are available on all tiers \u2014 they require Standard tier or higher",
+    "Assuming VNet Integration provides inbound isolation \u2014 it only controls outbound traffic; use Private Endpoints for inbound",
+    "Confusing App Service Environment with VNet Integration \u2014 ASE is fully isolated and dedicated; VNet Integration is just outbound connectivity for shared App Service",
+    "Thinking free managed certificates work without a custom domain \u2014 they only apply to custom domains, not the default azurewebsites.net domain",
+    "Assuming all apps in a shared App Service Plan are isolated from each other \u2014 they share CPU and memory, so a noisy app can affect others",
+    "Forgetting that Linux and Windows cannot be mixed in the same App Service Plan"
+  ]
+}

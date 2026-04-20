@@ -1,0 +1,57 @@
+{
+  "topic": "Azure Backup",
+  "summary": "Azure Backup is a cloud-based backup service that protects on-premises and Azure resources by storing backups in Recovery Services vaults or Backup vaults. It supports a wide range of workloads including Azure VMs, SQL Server, SAP HANA, Azure Files, Blobs, PostgreSQL, and Kubernetes. It provides application-consistent backups, multiple storage redundancy options, and built-in ransomware protection.",
+  "key_concepts": [
+    {
+      "concept": "Recovery Services Vault",
+      "explanation": "A storage entity in Azure that holds backup data and recovery points for VMs, files, SQL databases, and other workloads. Supports short and long-term retention."
+    },
+    {
+      "concept": "Backup Vault",
+      "explanation": "A newer vault type used for backing up specific workloads like Azure Managed Disks, PostgreSQL, and Kubernetes (AKS)."
+    },
+    {
+      "concept": "MARS Agent",
+      "explanation": "Microsoft Azure Recovery Services agent installed on-premises or on Azure VMs to back up files, folders, and system state directly to Azure."
+    },
+    {
+      "concept": "MABS / DPM",
+      "explanation": "Azure Backup Server (MABS) and Data Protection Manager (DPM) are agents used to protect on-premises VMs (Hyper-V, VMware) and workloads before sending to Azure."
+    },
+    {
+      "concept": "Application-Consistent Backup",
+      "explanation": "A backup that captures all in-memory data and pending transactions so the restored system starts cleanly without additional fixes, reducing restore time."
+    },
+    {
+      "concept": "Storage Redundancy Options",
+      "explanation": "LRS (locally redundant, 3 copies in one datacenter), GRS (geo-redundant, default, replicates to secondary region), and ZRS (zone-redundant, replicates across availability zones within same region)."
+    },
+    {
+      "concept": "Operational vs Vaulted Backup",
+      "explanation": "For Azure Blobs, operational backup is continuous and stored locally in the source storage account; vaulted backup copies data to the Recovery Services vault for stronger isolation."
+    }
+  ],
+  "exam_focus_points": [
+    "GRS is the default and recommended replication option for Recovery Services vaults",
+    "Recovery Services vault vs Backup vault \u2014 which workloads use which vault type",
+    "MARS agent backs up files/folders/system state; backup extensions back up entire Azure VMs",
+    "Azure Backup does not limit inbound/outbound data transfer except for offline initial backup via Azure Import/Export",
+    "Application-consistent backups ensure recovery points have all data needed without additional fixes",
+    "Azure Backup supports retention of PostgreSQL backups for up to 10 years",
+    "ZRS guarantees data residency and resiliency within the same region with no downtime",
+    "Backup storage is automatically managed with a pay-as-you-use model \u2014 no cost for on-premises storage devices"
+  ],
+  "similar_concepts": [
+    "Azure Site Recovery",
+    "Azure Storage redundancy (LRS/GRS/ZRS) at the storage account level",
+    "Azure Blob soft delete",
+    "Azure Managed Disk snapshots"
+  ],
+  "common_mistakes": [
+    "Confusing Recovery Services vault with Backup vault \u2014 newer workloads like Managed Disks and AKS use Backup vault, not Recovery Services vault",
+    "Assuming LRS is the default replication \u2014 GRS is the default and recommended option",
+    "Confusing Azure Backup with Azure Site Recovery \u2014 Backup is for data protection/restore, Site Recovery is for disaster recovery and VM replication/failover",
+    "Thinking MARS agent backs up entire VMs \u2014 it only backs up files, folders, and system state; full VM backup uses backup extensions",
+    "Assuming Azure Backup charges for data transfer \u2014 inbound/outbound data transfer is unlimited and free except for offline import via Azure Import/Export"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "topic": "Azure Load Balancer",
+  "summary": "Azure Load Balancer is a Layer 4 (OSI) service that distributes incoming TCP/UDP network traffic across backend VMs or VM scale sets. It supports both public (internet-facing) and internal (private network) configurations. It provides high availability, scalability to millions of flows, and low-latency pass-through load balancing.",
+  "key_concepts": [
+    {
+      "concept": "Public Load Balancer",
+      "explanation": "Handles inbound internet traffic to VMs and translates private IPs to public IPs for outbound connections from VMs."
+    },
+    {
+      "concept": "Internal (Private) Load Balancer",
+      "explanation": "Distributes traffic within a virtual network, used for private connectivity scenarios like hybrid on-premises access."
+    },
+    {
+      "concept": "Standard SKU",
+      "explanation": "The current production-grade SKU built on Zero Trust model; closed to inbound connections by default, requires NSGs to allow traffic. Has SLA and supports availability zones."
+    },
+    {
+      "concept": "Basic SKU",
+      "explanation": "Retired September 30, 2025. Was open to internet by default, had no SLA, and offered no charge. Must migrate to Standard."
+    },
+    {
+      "concept": "Gateway SKU",
+      "explanation": "Specialized SKU for chaining with third-party network virtual appliances (NVAs); enables transparent bump-in-the-wire scenarios."
+    },
+    {
+      "concept": "Health Probes",
+      "explanation": "Mechanisms that check backend instance health; load balancer only sends traffic to instances that pass health checks."
+    },
+    {
+      "concept": "Load Balancing Rules",
+      "explanation": "Configuration that defines how inbound traffic from the frontend is distributed to backend pool instances."
+    },
+    {
+      "concept": "High-Availability Ports",
+      "explanation": "A rule type that load balances all TCP and UDP ports simultaneously, used for NVA scenarios with internal load balancer."
+    },
+    {
+      "concept": "Backend Pool",
+      "explanation": "The group of VMs or VM scale sets that receive distributed traffic from the load balancer frontend."
+    },
+    {
+      "concept": "Outbound Connectivity",
+      "explanation": "Standard Load Balancer can provide SNAT (source network address translation) for VMs to reach the internet outbound."
+    }
+  ],
+  "exam_focus_points": [
+    "Azure Load Balancer operates at OSI Layer 4 (transport layer), not Layer 7 \u2014 use Application Gateway or Front Door for Layer 7/HTTP-aware load balancing.",
+    "Basic Load Balancer was retired September 30, 2025; exam questions may test knowledge of differences and migration requirements.",
+    "Standard Load Balancer is closed to inbound connections by default; NSGs must explicitly allow traffic.",
+    "Basic Load Balancer was open to the internet by default \u2014 a key security difference from Standard.",
+    "Public load balancer handles both inbound internet traffic AND outbound SNAT for VMs.",
+    "Internal load balancer is used for traffic within a VNet or hybrid (on-premises) scenarios.",
+    "Standard Load Balancer supports availability zones for zone-redundant or zonal deployments; Basic does not.",
+    "High-availability ports rule balances all ports simultaneously \u2014 only available on internal Standard Load Balancer.",
+    "Azure Load Balancer does not store customer data; all processing is real-time.",
+    "Gateway Load Balancer is used for transparent insertion of NVAs, not general load balancing.",
+    "Standard Load Balancer has an SLA; Basic Load Balancer had no SLA.",
+    "Health probes must be configured correctly \u2014 unhealthy instances are removed from rotation automatically."
+  ],
+  "similar_concepts": [
+    "Azure Application Gateway",
+    "Azure Front Door",
+    "Azure Traffic Manager",
+    "Azure Gateway Load Balancer"
+  ],
+  "common_mistakes": [
+    "Confusing Azure Load Balancer (Layer 4) with Application Gateway (Layer 7) \u2014 Load Balancer cannot route based on URL paths or HTTP headers.",
+    "Assuming Standard Load Balancer is open to the internet by default \u2014 it is closed by default and requires NSG rules to permit traffic.",
+    "Forgetting that Basic Load Balancer has been retired (Sept 30, 2025) and exam scenarios may require recommending migration to Standard.",
+    "Thinking Load Balancer can distribute traffic across Azure regions \u2014 cross-region load balancing requires Azure Front Door or Traffic Manager.",
+    "Confusing Internal Load Balancer with a VPN Gateway \u2014 Internal LB distributes traffic within a VNet, it does not create VPN tunnels.",
+    "Overlooking that outbound connectivity (SNAT) must be explicitly configured with Standard Load Balancer, unlike Basic which provided implicit outbound.",
+    "Mixing up Gateway Load Balancer (for NVA chaining) with Standard Load Balancer used for general workloads."
+  ]
+}

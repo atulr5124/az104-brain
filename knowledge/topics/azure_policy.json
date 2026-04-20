@@ -1,0 +1,61 @@
+{
+  "topic": "Azure Policy",
+  "summary": "Azure Policy is a governance service that enforces organizational standards by evaluating Azure resources against business rules defined in JSON (policy definitions). It assesses compliance at scale, provides a compliance dashboard, and can automatically remediate non-compliant resources. Policies can be grouped into initiatives and assigned to management groups, subscriptions, resource groups, or individual resources.",
+  "key_concepts": [
+    {
+      "concept": "Policy Definition",
+      "explanation": "A business rule written in JSON that describes conditions resources must meet and the effect to apply when they don't. Includes metadata, parameters, and a policy rule with conditions."
+    },
+    {
+      "concept": "Policy Initiative (policySet)",
+      "explanation": "A collection of multiple policy definitions grouped together to achieve a broader governance goal, making it easier to assign and track compliance for related rules."
+    },
+    {
+      "concept": "Policy Assignment",
+      "explanation": "The act of applying a policy definition or initiative to a specific scope \u2014 management group, subscription, resource group, or individual resource. Subscopes can be excluded."
+    },
+    {
+      "concept": "Effects",
+      "explanation": "The response Azure Policy takes when a resource is non-compliant. Common effects include Deny, Audit, Append, DeployIfNotExists, Modify, and DenyAction."
+    },
+    {
+      "concept": "Remediation",
+      "explanation": "The process of bringing non-compliant resources into compliance \u2014 either automatically for new resources or via bulk remediation tasks for existing resources."
+    },
+    {
+      "concept": "Evaluation Triggers",
+      "explanation": "Resources are evaluated when created/updated, when a new assignment is made, when an assignment is updated, or during the standard 24-hour compliance cycle."
+    },
+    {
+      "concept": "Policy vs RBAC",
+      "explanation": "Azure Policy controls resource state (what resources look like), while Azure RBAC controls user actions (what users can do). Policy enforcement applies regardless of who makes the change."
+    }
+  ],
+  "exam_focus_points": [
+    "Policy definitions are written in JSON format and assigned to a scope (management group, subscription, resource group, or resource)",
+    "The standard compliance evaluation cycle runs once every 24 hours",
+    "Policy effects include: Deny, Audit, Append, DeployIfNotExists, Modify, AuditIfNotExists, DenyAction",
+    "Azure Policy evaluates resource STATE; Azure RBAC controls user ACTIONS \u2014 they are complementary, not interchangeable",
+    "Policy initiatives (policySets) group multiple definitions for easier management and assignment",
+    "Resource Policy Contributor role includes most Azure Policy operations; Owner has full rights",
+    "User Access Administrator is required to grant managed identity permissions for deployIfNotExists or modify assignments",
+    "Policies can be applied to Azure Arc resources extending governance to other clouds and on-premises",
+    "Subscopes can be excluded from a policy assignment",
+    "Even a user with RBAC permission to perform an action can be blocked by Azure Policy if the result would be non-compliant"
+  ],
+  "similar_concepts": [
+    "Azure RBAC (Role-Based Access Control)",
+    "Azure Blueprints",
+    "Azure Management Groups",
+    "Azure Defender for Cloud (regulatory compliance features)",
+    "Resource Locks"
+  ],
+  "common_mistakes": [
+    "Confusing Azure Policy (enforces resource state/compliance) with Azure RBAC (controls who can perform actions) \u2014 they serve different purposes and work together",
+    "Assuming Policy only applies to new resources \u2014 it evaluates existing resources on a 24-hour cycle and supports bulk remediation for non-compliant existing resources",
+    "Thinking a user with RBAC permissions can bypass Azure Policy \u2014 Policy blocks non-compliant creates/updates regardless of RBAC permissions",
+    "Confusing policy definitions with policy initiatives \u2014 definitions are individual rules, initiatives group multiple definitions together",
+    "Forgetting that deployIfNotExists and modify effects require the managed identity to have sufficient permissions to create/update target resources, and User Access Administrator is needed to grant those permissions",
+    "Assuming Azure Policy only applies to Azure resources \u2014 it extends to Azure Arc-managed resources across other clouds and on-premises"
+  ]
+}

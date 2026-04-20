@@ -1,0 +1,62 @@
+{
+  "topic": "Azure VPN Gateway",
+  "summary": "Azure VPN Gateway sends encrypted traffic between Azure virtual networks and on-premises locations over the public internet using IPsec/IKE tunnels. It supports Site-to-Site, Point-to-Site, and VNet-to-VNet connection types. Multiple connections share available gateway bandwidth, and gateways can be deployed zone-redundantly for higher availability.",
+  "key_concepts": [
+    {
+      "concept": "Site-to-Site (S2S)",
+      "explanation": "IPsec/IKE VPN tunnel between VPN Gateway and an on-premises VPN device; used for persistent cross-premises connectivity"
+    },
+    {
+      "concept": "Point-to-Site (P2S)",
+      "explanation": "VPN connection from an individual remote client to Azure VNet using SSTP, IKEv2, or OpenVPN; used for remote workers"
+    },
+    {
+      "concept": "VNet-to-VNet",
+      "explanation": "IPsec/IKE tunnel between two Azure VPN gateways in different VNets, even across regions or subscriptions"
+    },
+    {
+      "concept": "Gateway SKU",
+      "explanation": "Determines throughput, max tunnels, BGP support, and zone-redundancy; ranges from Basic (100 Mbps) to VpnGw5 (10 Gbps)"
+    },
+    {
+      "concept": "PolicyBased vs RouteBased",
+      "explanation": "PolicyBased uses static routing (legacy, limited features); RouteBased uses dynamic routing and is required for P2S, VNet-to-VNet, and BGP"
+    },
+    {
+      "concept": "Active-Active vs Active-Passive",
+      "explanation": "Active-active uses two public IPs for higher availability; active-passive keeps one gateway in standby"
+    },
+    {
+      "concept": "Zone-Redundant Gateway",
+      "explanation": "Deploying with AZ SKU (e.g., VpnGw1AZ) spreads across availability zones, protecting against zone-level failures"
+    },
+    {
+      "concept": "ExpressRoute + VPN Gateway coexistence",
+      "explanation": "VPN Gateway can act as a failover path for ExpressRoute or connect sites not on ExpressRoute"
+    }
+  ],
+  "exam_focus_points": [
+    "Know which connection type to use: S2S for branch offices, P2S for remote users, VNet-to-VNet for inter-VNet connectivity",
+    "Basic SKU does NOT support BGP, zone-redundancy, or IKEv2/OpenVPN for P2S \u2014 it is dev/test only",
+    "PolicyBased gateways only support S2S with static routing; RouteBased supports all connection types",
+    "If you need more than 100 S2S tunnels, use Virtual WAN, not VPN Gateway",
+    "VPN Gateway is billed on two dimensions: hourly compute (by SKU) and egress data transfer",
+    "Zone-redundant SKUs have 'AZ' suffix (e.g., VpnGw1AZ) and require a specific public IP SKU (Standard, static)",
+    "VPN Gateway requires a GatewaySubnet in the VNet \u2014 this subnet cannot be used for other resources",
+    "Bandwidth is shared across all tunnels connected to the same gateway"
+  ],
+  "similar_concepts": [
+    "Azure ExpressRoute",
+    "Azure Virtual WAN",
+    "Azure VNet Peering",
+    "Azure Local Network Gateway"
+  ],
+  "common_mistakes": [
+    "Confusing VNet Peering with VPN Gateway \u2014 peering is non-encrypted and lower latency; VPN Gateway encrypts traffic and works over the internet",
+    "Choosing Basic SKU for production \u2014 it lacks BGP, zone-redundancy, and IKEv2/OpenVPN support",
+    "Assuming VPN Gateway and ExpressRoute are mutually exclusive \u2014 they can coexist with VPN as failover",
+    "Forgetting that all tunnels share gateway bandwidth \u2014 one high-traffic tunnel can starve others",
+    "Confusing PolicyBased (static, legacy) with RouteBased (dynamic) \u2014 most modern features require RouteBased",
+    "Not accounting for the GatewaySubnet requirement \u2014 it must be named exactly 'GatewaySubnet'"
+  ]
+}
