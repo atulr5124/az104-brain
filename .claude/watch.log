@@ -1,0 +1,28 @@
+[2026-04-20 16:22:46] Watching inputs/ for new files...
+[2026-04-20 16:22:46] Supported formats: .md, .txt, .pdf
+[2026-04-20 16:22:46] Drop any study material into inputs/ to auto-ingest it.
+[2026-04-20 16:22:46] Press Ctrl+C to stop.
+
+[2026-04-20 16:23:11] New file detected: azure_expressroutes.md
+[2026-04-20 16:23:11] Topic name derived: Azure Expressroutes
+[2026-04-20 16:23:11] File too short to ingest meaningfully: azure_expressroutes.md
+[2026-04-20 16:24:07] New file detected: azure_express_routes.md
+[2026-04-20 16:24:07] Topic name derived: Azure Express Routes
+[2026-04-20 16:24:07] File too short to ingest meaningfully: azure_express_routes.md
+[2026-04-20 16:25:04] Watcher stopped.
+[2026-04-20 16:26:07] Watching inputs/ for new files...
+[2026-04-20 16:26:07] Supported formats: .md, .pdf, .txt
+[2026-04-20 16:26:07] Drop any study material into inputs/ to auto-ingest it.
+[2026-04-20 16:26:07] Press Ctrl+C to stop.
+
+[2026-04-20 16:28:35] Watcher stopped.
+[2026-04-20 16:30:00] Watching inputs/ for new files...
+[2026-04-20 16:30:00] Supported formats: .txt, .pdf, .md
+[2026-04-20 16:30:00] Drop any study material into inputs/ to auto-ingest it.
+[2026-04-20 16:30:00] Press Ctrl+C to stop.
+
+[2026-04-20 16:30:13] New file detected: azure_express_routes.md
+[2026-04-20 16:30:13] Topic name derived: Azure Express Routes
+[2026-04-20 16:30:13] Ingesting: Azure Express Routes...
+[2026-04-20 16:30:37] Successfully ingested: Azure Express Routes
+[2026-04-20 16:30:48] Watcher stopped.
