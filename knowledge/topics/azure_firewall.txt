@@ -1,0 +1,110 @@
+Table of contents
+Exit editor mode
+Ask Learn
+Ask Learn
+Reading mode
+Table of contents
+Read in English
+Add
+Add to plan
+Edit
+Share via
+Facebook
+x.com
+LinkedIn
+Email
+Copy Markdown
+Print
+Note
+Access to this page requires authorization. You can try
+signing in
+or
+changing directories
+.
+Access to this page requires authorization. You can try
+changing directories
+.
+What is Azure Firewall?
+Feedback
+Summarize this article for me
+Azure Firewall is a cloud-native, intelligent network firewall security service that offers top-tier threat protection for your Azure cloud workloads. It's a fully stateful firewall as a service, featuring built-in high availability and unlimited cloud scalability. Azure Firewall inspects both east-west and north-south traffic. To understand these traffic types, see
+east-west and north-south traffic
+.
+Azure Firewall is available in three SKUs: Basic, Standard, and Premium.
+Note
+Azure Firewall is one of the services that make up the Network Security category in Azure. Other services in this category include
+Azure DDoS Protection
+and
+Azure Web Application Firewall
+. Each service has its own unique features and use cases. For more information on this service category, see
+Network Security
+.
+Azure Firewall Basic
+Azure Firewall Basic is designed for small and medium-sized businesses (SMBs) to secure their Azure cloud environments. It provides essential protection at an affordable price.
+Key limitations of Azure Firewall Basic include:
+Supports Threat Intel
+alert mode
+only
+Fixed scale unit with two virtual machine backend instances
+Recommended for environments with an estimated throughput of 250 Mbps
+For more information, see
+Azure Firewall features by SKU
+.
+Azure Firewall Standard
+Azure Firewall Standard offers L3-L7 filtering and threat intelligence feeds directly from Microsoft Cyber Security. It can alert you to and block traffic from or to known malicious IP addresses and domains. It updates in real time to protect against new and emerging threats.
+For more information, see
+Azure Firewall features by SKU
+.
+Azure Firewall Premium
+Azure Firewall Premium provides advanced capabilities, including signature-based IDPS for rapid attack detection by identifying specific patterns. These patterns can include byte sequences in network traffic or known malicious instruction sequences used by malware. With over 67,000 signatures in more than 50 categories, updated in real time, it protects against new and emerging exploits such as malware, phishing, coin mining, and Trojan attacks.
+For more information, see
+Azure Firewall features by SKU
+.
+Feature comparison
+To compare all Azure Firewall SKU features, see
+Choose the right Azure Firewall SKU to meet your needs
+.
+Azure Firewall Manager
+Azure Firewall Manager provides a central place to manage Azure Firewalls across multiple subscriptions. It uses firewall policies to apply a common set of network and application rules and configurations to the firewalls in your tenant.
+Firewall Manager supports firewalls in both virtual network and Virtual WAN (Secure Virtual Hub) environments. Secure Virtual Hubs use the Virtual WAN route automation solution to simplify routing traffic to the firewall with just a few steps.
+To learn more, see
+Azure Firewall Manager
+.
+Pricing and SLA
+For pricing details, see
+Azure Firewall pricing
+.
+For SLA information, see
+Service Level Agreements (SLA) for Online Services
+.
+Supported regions
+For a list of supported regions, see
+Azure products available by region
+.
+What's new
+To learn about the latest updates, see
+Azure updates
+.
+Known problems
+For known problems, see
+Azure Firewall known issues
+.
+Next steps
+Quickstart: Create an Azure Firewall and a firewall policy - ARM template
+Quickstart: Deploy Azure Firewall with Availability Zones - ARM template
+Tutorial: Deploy and configure Azure Firewall by using the Azure portal
+Learn module: Introduction to Azure Firewall
+Learn more about Azure network security
+Feedback
+Was this page helpful?
+Yes
+No
+No
+Need help with this topic?
+Want to try using Ask Learn to clarify or guide you through this topic?
+Ask Learn
+Ask Learn
+Suggest a fix?
+Additional resources
+Last updated on
+2026-03-29

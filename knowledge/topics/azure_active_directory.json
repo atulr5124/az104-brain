@@ -1,0 +1,71 @@
+{
+  "topic": "Azure Active Directory",
+  "summary": "Microsoft Entra ID (formerly Azure Active Directory) is Microsoft's cloud-based identity and access management service that handles authentication, authorization, and policy enforcement for users, devices, apps, and resources. It is the foundational identity layer used automatically by all Microsoft 365, Azure, and Dynamics CRM Online tenants. The broader Microsoft Entra family extends this with governance, protection, external access, and workload identity capabilities.",
+  "key_concepts": [
+    {
+      "concept": "Microsoft Entra ID (Azure AD)",
+      "explanation": "Cloud-based identity provider that authenticates users and enforces access policies; every Azure subscription comes with a tenant automatically."
+    },
+    {
+      "concept": "Microsoft Entra Domain Services",
+      "explanation": "Managed domain service providing legacy protocols (LDAP, Kerberos, NTLM, Group Policy) for apps that cannot use modern authentication \u2014 Microsoft runs the domain controllers for you."
+    },
+    {
+      "concept": "Microsoft Entra ID Protection",
+      "explanation": "Detects risky sign-ins and compromised identities, and can automatically enforce remediation via risk-based Conditional Access policies."
+    },
+    {
+      "concept": "Conditional Access",
+      "explanation": "Policy engine that evaluates conditions (user, location, device, risk level) at sign-in time and enforces controls such as MFA or block."
+    },
+    {
+      "concept": "Microsoft Entra ID Governance",
+      "explanation": "Automates access lifecycle: provisioning, access reviews, and deprovisioning based on identity lifecycle events like joining or leaving the company."
+    },
+    {
+      "concept": "Microsoft Entra External ID",
+      "explanation": "Manages identities for guests, partners, and consumers (B2B and CIAM), supporting social logins and self-service registration."
+    },
+    {
+      "concept": "Microsoft Entra Workload ID",
+      "explanation": "Identity solution for non-human identities such as apps, services, and containers that need to authenticate to Azure resources."
+    },
+    {
+      "concept": "Zero Trust",
+      "explanation": "Security model that verifies every access request explicitly rather than trusting by network location; Microsoft Entra is the control plane for Zero Trust."
+    },
+    {
+      "concept": "Tenant / Directory",
+      "explanation": "A dedicated instance of Microsoft Entra ID for an organization, automatically created with an onmicrosoft.com domain; custom domains can be added."
+    },
+    {
+      "concept": "Microsoft Graph API",
+      "explanation": "REST API used to programmatically manage Entra ID resources such as users, groups, and licenses."
+    }
+  ],
+  "exam_focus_points": [
+    "Every Azure subscription is automatically associated with one Microsoft Entra ID tenant.",
+    "Microsoft Entra Domain Services provides managed Kerberos/NTLM/LDAP \u2014 it does NOT sync passwords back to on-premises AD.",
+    "Conditional Access policies are evaluated at sign-in and can require MFA, compliant device, or block access based on risk level.",
+    "Difference between Microsoft Entra ID Free, P1, and P2 license tiers and which features (e.g., ID Protection, Governance) require P2.",
+    "Microsoft Entra ID Governance handles joiner/mover/leaver lifecycle automation and access reviews.",
+    "Microsoft Entra External ID covers both B2B (guest collaboration) and B2C/CIAM (customer-facing apps) scenarios.",
+    "Custom domain names can be added to a tenant and must be verified via DNS record.",
+    "Microsoft Graph API is the programmatic interface for managing Entra ID resources and automating admin tasks.",
+    "Microsoft Entra Workload ID is used to assign managed identities to apps, services, and containers."
+  ],
+  "similar_concepts": [
+    "Active Directory Domain Services (AD DS) \u2014 on-premises Windows Server AD",
+    "Microsoft Entra Domain Services \u2014 managed legacy domain service, often confused with Entra ID itself",
+    "Microsoft Entra ID Governance vs. Microsoft Entra ID Protection \u2014 governance is about lifecycle/access reviews; protection is about risk detection",
+    "Microsoft Entra External ID vs. Entra ID \u2014 External ID is for guests/customers, not internal employees"
+  ],
+  "common_mistakes": [
+    "Confusing Microsoft Entra ID (cloud IdP) with on-premises Active Directory Domain Services \u2014 they are different products with different protocols.",
+    "Thinking Microsoft Entra Domain Services is the same as Entra ID \u2014 Domain Services is a separate managed service for legacy LDAP/Kerberos workloads.",
+    "Assuming Conditional Access is available on the Free tier \u2014 advanced Conditional Access policies require P1 or higher.",
+    "Believing you must create a new tenant when signing up for Azure \u2014 a tenant is automatically provisioned.",
+    "Confusing B2B (guest collaboration via External ID) with B2C/CIAM (customer identity management) \u2014 they have different configuration paths and use cases.",
+    "Thinking ID Protection automatically blocks risky users without configuration \u2014 an administrator must create and enable risk-based Conditional Access policies."
+  ]
+}

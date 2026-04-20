@@ -1,0 +1,66 @@
+{
+  "topic": "Role Based Access Control",
+  "summary": "Azure RBAC is an authorization system built on Azure Resource Manager that controls who can access Azure resources, what actions they can perform, and at what scope. Access is granted by creating role assignments that combine a security principal, a role definition, and a scope. It uses an additive permissions model, and deny assignments take precedence over role assignments.",
+  "key_concepts": [
+    {
+      "concept": "Security Principal",
+      "explanation": "The identity requesting access \u2014 can be a user, group, service principal, or managed identity."
+    },
+    {
+      "concept": "Role Definition",
+      "explanation": "A collection of permissions (Actions, NotActions, DataActions, NotDataActions) defining what operations are allowed or excluded."
+    },
+    {
+      "concept": "Scope",
+      "explanation": "The boundary at which a role is assigned \u2014 can be management group, subscription, resource group, or resource, structured as a parent-child hierarchy."
+    },
+    {
+      "concept": "Role Assignment",
+      "explanation": "The binding of a role definition to a security principal at a specific scope; creating it grants access, removing it revokes access."
+    },
+    {
+      "concept": "Deny Assignments",
+      "explanation": "Explicit blocks on actions that override role assignments; if a deny assignment applies, access is blocked regardless of roles granted."
+    },
+    {
+      "concept": "Built-in Roles",
+      "explanation": "Predefined roles like Owner, Contributor, Reader, and Virtual Machine Contributor provided by Azure for common access scenarios."
+    },
+    {
+      "concept": "Custom Roles",
+      "explanation": "User-defined roles created when built-in roles don't meet organizational needs, allowing fine-grained permission sets."
+    },
+    {
+      "concept": "Effective Permissions",
+      "explanation": "Calculated as Actions minus NotActions for management, and DataActions minus NotDataActions for data plane; multiple assignments are additive."
+    }
+  ],
+  "exam_focus_points": [
+    "Role assignments consist of exactly three elements: security principal, role definition, and scope.",
+    "Azure RBAC uses an additive model \u2014 effective permissions are the sum of all role assignments.",
+    "Deny assignments take precedence over role assignments and block access even if a role grants it.",
+    "The four scope levels in order: management group > subscription > resource group > resource.",
+    "Role assignments are transitive for groups, including nested group memberships.",
+    "Effective management permissions = Actions - NotActions; Effective data permissions = DataActions - NotDataActions.",
+    "Azure RBAC data (role definitions, assignments, deny assignments) is stored and replicated globally.",
+    "RBAC is enforced by Azure Resource Manager, not at the OS or application level.",
+    "Managed identities and service principals can be assigned roles just like users and groups.",
+    "Conditions in role assignments are evaluated last; if conditions are not met, access is denied."
+  ],
+  "similar_concepts": [
+    "Azure Active Directory (Entra ID) roles \u2014 for managing AAD itself, not Azure resources",
+    "Azure Policy \u2014 controls what can be done with resources (governance), not who can access them",
+    "Resource locks \u2014 prevent changes/deletion but are not an access control mechanism",
+    "Shared Access Signatures (SAS) \u2014 grants scoped access to storage without RBAC role assignments",
+    "Classic subscription administrator roles \u2014 legacy model replaced by Azure RBAC"
+  ],
+  "common_mistakes": [
+    "Confusing Azure RBAC roles with Azure AD (Entra ID) roles \u2014 they are separate systems with different scopes.",
+    "Thinking permissions are exclusive rather than additive \u2014 multiple role assignments stack, not override.",
+    "Assuming a higher-scope role assignment can be blocked by removing a lower-scope assignment \u2014 deny assignments are needed to block inherited permissions.",
+    "Forgetting that deny assignments override role grants \u2014 candidates often assume roles always win.",
+    "Confusing the Contributor role (cannot manage access) with the Owner role (can manage access and assign roles).",
+    "Missing that role assignments apply transitively through nested groups.",
+    "Thinking RBAC controls data-plane access by default \u2014 some services require explicit data action permissions separate from management permissions."
+  ]
+}

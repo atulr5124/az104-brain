@@ -1,0 +1,79 @@
+{
+  "topic": "Virtual Networks",
+  "summary": "Azure Virtual Network (VNet) is the foundational private networking service in Azure that enables secure communication between Azure resources, the internet, and on-premises networks. It provides isolation, segmentation, and traffic control through subnets, security groups, and routing rules. VNets are free to use and span all availability zones within a region.",
+  "key_concepts": [
+    {
+      "concept": "Virtual Network (VNet)",
+      "explanation": "A logically isolated network in Azure where you deploy resources like VMs. Resources within a VNet can communicate privately with each other."
+    },
+    {
+      "concept": "Subnet",
+      "explanation": "A range of IP addresses within a VNet used to segment resources. Traffic between subnets can be filtered and controlled."
+    },
+    {
+      "concept": "VNet Peering",
+      "explanation": "Connects two VNets so resources in each can communicate with each other. Works across Azure regions (global peering)."
+    },
+    {
+      "concept": "Service Endpoints",
+      "explanation": "Extends your VNet's private address space to Azure services like Storage and SQL Database, securing them to only your VNet."
+    },
+    {
+      "concept": "Network Security Groups (NSG)",
+      "explanation": "Contains inbound and outbound rules that filter traffic by IP, port, and protocol. Applied at subnet or NIC level."
+    },
+    {
+      "concept": "Point-to-Site VPN",
+      "explanation": "Connects a single computer to a VNet over an encrypted tunnel. Good for individual developers or remote workers."
+    },
+    {
+      "concept": "Site-to-Site VPN",
+      "explanation": "Connects an entire on-premises network to Azure VNet via an encrypted tunnel over the internet using a VPN gateway."
+    },
+    {
+      "concept": "ExpressRoute",
+      "explanation": "A private, dedicated connection between on-premises network and Azure that does NOT traverse the public internet. More reliable and secure than VPN."
+    },
+    {
+      "concept": "Route Tables (UDR)",
+      "explanation": "User-defined routes that override Azure's default routing to control where traffic is directed, such as forcing traffic through a firewall."
+    },
+    {
+      "concept": "Network Virtual Appliance (NVA)",
+      "explanation": "A VM from Azure Marketplace that performs network functions like firewalling or WAN optimization within a VNet."
+    },
+    {
+      "concept": "Azure Private Link",
+      "explanation": "Provides private access to a specific instance of an Azure service from your VNet, keeping traffic off the public internet."
+    }
+  ],
+  "exam_focus_points": [
+    "VNet peering does NOT support transitive routing \u2014 if VNet A peers with VNet B and VNet B peers with VNet C, A cannot reach C without a direct peering or hub-spoke with NVA/gateway transit",
+    "NSGs can be applied at both the subnet level and the individual NIC level \u2014 subnet NSG is evaluated first for inbound traffic",
+    "ExpressRoute traffic never traverses the public internet; Site-to-Site VPN does (encrypted tunnel)",
+    "Service Endpoints secure Azure services to a VNet but the traffic still uses the Azure backbone; Private Link keeps the private IP and is more secure",
+    "VNets span all availability zones in a region \u2014 you do NOT need to split a VNet per availability zone",
+    "Azure Virtual Network itself is free; charges apply to associated resources like VPN gateways, public IPs, and VMs",
+    "To move a VM to a different VNet, you must delete and recreate it \u2014 you cannot move a running VM between VNets",
+    "BGP routes can be propagated from on-premises to VNet via VPN Gateway or ExpressRoute",
+    "Point-to-Site VPN requires configuration on each individual client machine",
+    "Internal standard load balancer does NOT provide outbound internet connectivity by default \u2014 you need a public IP, NAT gateway, or public load balancer"
+  ],
+  "similar_concepts": [
+    "Service Endpoints vs Private Link",
+    "VNet Peering vs VPN Gateway (VNet-to-VNet)",
+    "NSG vs Azure Firewall",
+    "Site-to-Site VPN vs ExpressRoute",
+    "Route Tables (UDR) vs BGP routes",
+    "Application Security Groups (ASG) vs Network Security Groups (NSG)"
+  ],
+  "common_mistakes": [
+    "Assuming VNet peering is transitive \u2014 it is NOT; three VNets in a chain cannot communicate end-to-end without direct peering or a hub with gateway transit",
+    "Confusing Service Endpoints with Private Link \u2014 Service Endpoints expose the service via public IP but restrict access to the VNet; Private Link gives a true private IP within the VNet",
+    "Thinking ExpressRoute uses an encrypted VPN tunnel over the internet \u2014 it is a private dedicated circuit, not internet-based",
+    "Believing Azure VNet costs money \u2014 the VNet itself is free, but attached resources like VPN Gateways incur charges",
+    "Assuming you can move a VM between VNets without downtime \u2014 you must delete and recreate the VM",
+    "Thinking NSGs are only applied at the subnet level \u2014 they can also be applied at the NIC level, and both can be active simultaneously",
+    "Confusing Point-to-Site (single computer) with Site-to-Site (entire on-premises network) VPN types"
+  ]
+}

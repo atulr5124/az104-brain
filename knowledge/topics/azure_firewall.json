@@ -1,0 +1,51 @@
+{
+  "topic": "Azure Firewall",
+  "summary": "Azure Firewall is a fully stateful, cloud-native network firewall service with built-in high availability and unlimited scalability that protects Azure workloads. It inspects both east-west (internal) and north-south (inbound/outbound) traffic. It comes in three SKUs \u2014 Basic, Standard, and Premium \u2014 each offering increasing levels of threat protection.",
+  "key_concepts": [
+    {
+      "concept": "Azure Firewall Basic",
+      "explanation": "Entry-level SKU for SMBs; supports Threat Intel in alert-only mode, fixed 2-VM backend, recommended up to 250 Mbps throughput."
+    },
+    {
+      "concept": "Azure Firewall Standard",
+      "explanation": "Provides L3-L7 filtering with real-time threat intelligence from Microsoft Cyber Security, blocking known malicious IPs and domains."
+    },
+    {
+      "concept": "Azure Firewall Premium",
+      "explanation": "Adds signature-based IDPS with 67,000+ signatures across 50+ categories for detecting malware, phishing, coin mining, and Trojans."
+    },
+    {
+      "concept": "Azure Firewall Manager",
+      "explanation": "Centralized management plane for deploying and governing Azure Firewalls across multiple subscriptions using shared firewall policies."
+    },
+    {
+      "concept": "Stateful Firewall",
+      "explanation": "Tracks the state of network connections, meaning return traffic is automatically allowed without explicit rules \u2014 unlike stateless packet filtering."
+    },
+    {
+      "concept": "East-West vs North-South Traffic",
+      "explanation": "East-west is traffic between internal resources; north-south is traffic between the internet and internal resources. Azure Firewall inspects both."
+    }
+  ],
+  "exam_focus_points": [
+    "Azure Firewall is a fully stateful firewall as a service \u2014 distinguish from NSGs which are stateless packet filters",
+    "Three SKUs: Basic (SMB, alert-only Threat Intel, 250 Mbps), Standard (L3-L7 + Threat Intel block mode), Premium (IDPS with 67,000+ signatures)",
+    "Azure Firewall Premium is the only SKU with signature-based IDPS \u2014 required for detecting malware and exploit patterns",
+    "Azure Firewall Manager is used for centralized, multi-subscription firewall policy management",
+    "Azure Firewall supports both Virtual Network and Virtual WAN (Secure Virtual Hub) deployments",
+    "Azure Firewall is in the Network Security category alongside Azure DDoS Protection and Azure Web Application Firewall (WAF)"
+  ],
+  "similar_concepts": [
+    "Network Security Groups (NSGs)",
+    "Azure Web Application Firewall (WAF)",
+    "Azure DDoS Protection",
+    "Azure Front Door with WAF policy"
+  ],
+  "common_mistakes": [
+    "Confusing Azure Firewall with NSGs \u2014 NSGs are stateless L3/L4 controls on subnets/NICs; Azure Firewall is a stateful, centralized L3-L7 appliance",
+    "Assuming Basic SKU supports Threat Intel block mode \u2014 Basic only supports alert mode, not deny/block",
+    "Thinking Azure Firewall Premium is just Standard with more throughput \u2014 the key differentiator is IDPS (intrusion detection and prevention), not performance",
+    "Confusing Azure Firewall Manager with Azure Monitor \u2014 Manager is for policy/governance of firewalls, not for metrics or diagnostics",
+    "Assuming Azure Firewall alone protects against DDoS or web app attacks \u2014 WAF and DDoS Protection are separate services for those threat vectors"
+  ]
+}

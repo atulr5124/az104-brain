@@ -1,4 +1,41 @@
 {
-  "topics": [],
-  "last_updated": null
+  "topics": [
+    {
+      "id": "virtual_networks",
+      "name": "Virtual Networks",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview",
+      "ingested_at": "2026-04-20T12:13:24.151831"
+    },
+    {
+      "id": "network_security_groups",
+      "name": "Network Security Groups",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+      "ingested_at": "2026-04-20T12:15:52.332987"
+    },
+    {
+      "id": "azure_firewall",
+      "name": "Azure Firewall",
+      "url": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+      "ingested_at": "2026-04-20T12:16:16.161464"
+    },
+    {
+      "id": "azure_active_directory",
+      "name": "Azure Active Directory",
+      "url": "https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis",
+      "ingested_at": "2026-04-20T12:17:08.290226"
+    },
+    {
+      "id": "role_based_access_control",
+      "name": "Role Based Access Control",
+      "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+      "ingested_at": "2026-04-20T12:17:51.941108"
+    },
+    {
+      "id": "azure_storage_accounts",
+      "name": "Azure Storage Accounts",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview",
+      "ingested_at": "2026-04-20T12:18:18.735170"
+    }
+  ],
+  "last_updated": "2026-04-20T12:18:18.736034"
 }

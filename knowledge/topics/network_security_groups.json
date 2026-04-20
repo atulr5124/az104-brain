@@ -1,0 +1,71 @@
+{
+  "topic": "Network Security Groups",
+  "summary": "Network Security Groups (NSGs) are Azure resources that filter inbound and outbound network traffic between Azure resources in a virtual network using security rules. Each rule is evaluated by priority (100\u20134096, lower = higher priority) and uses a five-tuple of source, source port, destination, destination port, and protocol to allow or deny traffic. NSGs are stateful, meaning return traffic for allowed connections is automatically permitted without an explicit rule.",
+  "key_concepts": [
+    {
+      "concept": "Security Rules",
+      "explanation": "User-defined allow/deny rules with a priority (100\u20134096), source/destination (IP, CIDR, service tag, or ASG), protocol, port range, and direction (inbound/outbound). Lower priority number = processed first."
+    },
+    {
+      "concept": "Default Security Rules",
+      "explanation": "Azure automatically adds 6 rules to every NSG (3 inbound, 3 outbound) at priority 65000\u201365500. They allow VNet-to-VNet and outbound internet traffic, allow Azure Load Balancer probes, and deny everything else. You cannot delete them but can override them with higher-priority custom rules."
+    },
+    {
+      "concept": "Stateful Processing",
+      "explanation": "NSGs track connection state. If you allow outbound traffic on port 80, the inbound response is automatically allowed \u2014 you don't need a separate inbound rule for return traffic."
+    },
+    {
+      "concept": "Augmented Security Rules",
+      "explanation": "A single rule that can specify multiple IP addresses, CIDR ranges, and port ranges, reducing the total number of rules needed. Only available in Resource Manager (ARM) NSGs, not classic."
+    },
+    {
+      "concept": "Service Tags",
+      "explanation": "Named groupings of IP address prefixes for Azure services (e.g., VirtualNetwork, AzureLoadBalancer, Internet) used in source/destination fields to simplify rules without managing individual IPs."
+    },
+    {
+      "concept": "Application Security Groups (ASGs)",
+      "explanation": "Logical groupings of VMs that can be used as source or destination in NSG rules, allowing policy based on application role rather than explicit IP addresses."
+    },
+    {
+      "concept": "Rule Priority",
+      "explanation": "Rules are processed in ascending priority number order (100 first, 4096 last). Processing stops at the first matching rule, so rule order matters. Default rules are 65000\u201365500."
+    },
+    {
+      "concept": "NSG Association",
+      "explanation": "An NSG can be associated with a subnet or a network interface (NIC). Traffic through a subnet-associated NSG is filtered for all VMs in that subnet; a NIC-associated NSG filters only that VM's traffic. Both can apply simultaneously."
+    },
+    {
+      "concept": "Existing Connection Behavior",
+      "explanation": "Removing or adding NSG rules only affects new connections. Existing active connections (e.g., an open SSH session) are not interrupted when rules change."
+    }
+  ],
+  "exam_focus_points": [
+    "Default rules cannot be deleted, only overridden by creating a custom rule with a lower priority number (higher priority).",
+    "Priority range is 100 to 4096; lower number = higher priority = processed first.",
+    "NSGs are stateful: return traffic for allowed sessions is automatically permitted without an explicit rule in the opposite direction.",
+    "An NSG can be associated with a subnet, a NIC, or both; if both, both sets of rules are evaluated.",
+    "Default inbound rules: AllowVNetInBound (65000), AllowAzureLoadBalancerInBound (65001), DenyAllInbound (65500).",
+    "Default outbound rules: AllowVnetOutBound (65000), AllowInternetOutBound (65001), DenyAllOutBound (65500).",
+    "Augmented security rules allow multiple IPs/ranges/ports in one rule but NOT multiple service tags or ASGs in a single rule.",
+    "NSG rules use a five-tuple: source IP, source port, destination IP, destination port, protocol.",
+    "You cannot have two rules with the same priority and direction \u2014 this causes a conflict.",
+    "Supported protocols: TCP, UDP, ICMP, ESP, AH, or Any (ESP/AH not available in portal, only ARM templates).",
+    "Rule changes only affect new connections; existing connections remain unaffected."
+  ],
+  "similar_concepts": [
+    "Azure Firewall",
+    "Application Security Groups (ASGs)",
+    "Azure DDoS Protection",
+    "User Defined Routes (UDRs)",
+    "Web Application Firewall (WAF)"
+  ],
+  "common_mistakes": [
+    "Thinking lower priority number means lower importance \u2014 lower number actually means HIGHER priority (processed first).",
+    "Assuming you need an inbound rule to allow return traffic when an outbound rule already allows the connection \u2014 NSGs are stateful so return traffic is automatically allowed.",
+    "Trying to delete default security rules \u2014 they cannot be removed, only overridden with a custom rule at a lower priority number.",
+    "Confusing subnet-level NSG and NIC-level NSG \u2014 if both are present, traffic must pass BOTH NSGs, and the most restrictive combination applies.",
+    "Assuming an existing SSH/RDP session will drop immediately when the allowing rule is removed \u2014 existing connections remain until they naturally close.",
+    "Trying to specify multiple service tags in a single augmented security rule \u2014 only one service tag per rule is allowed.",
+    "Forgetting that the AzureLoadBalancer service tag is required for load balancer health probes \u2014 blocking it will cause the load balancer to mark the backend as unhealthy."
+  ]
+}

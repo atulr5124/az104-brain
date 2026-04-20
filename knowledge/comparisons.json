@@ -1,3 +1,172 @@
 {
-  "comparisons": []
+  "comparisons": [
+    {
+      "topic_a": "Network Security Groups",
+      "topic_b": "Azure Firewall",
+      "one_line_distinction": "NSGs are stateful L3/L4 traffic filters attached to subnets or NICs, while Azure Firewall is a centralized, fully stateful L3-L7 managed appliance with threat intelligence and IDPS that sits in its own subnet and inspects all traffic flowing through it.",
+      "analogy": "NSGs are like door locks on individual rooms and hallways in a building \u2014 each one only controls access at that specific point. Azure Firewall is like a staffed security checkpoint at the building's main entrance \u2014 one place that inspects everyone coming in or out, logs everything, and can recognize known threats by face.",
+      "key_differences": [
+        {
+          "dimension": "OSI Layer",
+          "topic_a": "L3/L4 only \u2014 filters by IP, port, and protocol",
+          "topic_b": "L3-L7 \u2014 can inspect application-layer content, FQDNs, and threat signatures"
+        },
+        {
+          "dimension": "Statefulness",
+          "topic_a": "Stateful for allowed connections (return traffic auto-permitted), but rules themselves are simple packet-filter rules",
+          "topic_b": "Fully stateful firewall-as-a-service with deep connection tracking and session awareness"
+        },
+        {
+          "dimension": "Scope / placement",
+          "topic_a": "Associated with a subnet or NIC; enforced at that specific network boundary only",
+          "topic_b": "Deployed in a dedicated AzureFirewallSubnet; traffic must be routed to it via UDRs to be inspected"
+        },
+        {
+          "dimension": "Threat intelligence",
+          "topic_a": "None \u2014 no awareness of known malicious IPs or domains beyond what you manually configure",
+          "topic_b": "Built-in Microsoft Cyber Security threat intel; Standard blocks known malicious IPs/domains; Premium adds signature-based IDPS"
+        },
+        {
+          "dimension": "Management centralization",
+          "topic_a": "Managed per-resource; no native cross-subscription policy management",
+          "topic_b": "Azure Firewall Manager provides centralized policy governance across multiple subscriptions and hubs"
+        },
+        {
+          "dimension": "Cost model",
+          "topic_a": "Free resource; no per-hour charge for the NSG itself",
+          "topic_b": "Paid managed service with per-hour deployment cost plus data processing charges"
+        },
+        {
+          "dimension": "IDPS / malware detection",
+          "topic_a": "Not supported",
+          "topic_b": "Premium SKU only \u2014 67,000+ signatures across 50+ categories"
+        },
+        {
+          "dimension": "FQDN / URL filtering",
+          "topic_a": "Not supported \u2014 rules use IP addresses, CIDRs, service tags, or ASGs only",
+          "topic_b": "Supported \u2014 can allow/deny based on fully qualified domain names and URL categories"
+        }
+      ],
+      "when_to_use_a": "Use NSGs when you need simple, low-cost L3/L4 micro-segmentation between resources within a VNet \u2014 e.g., isolating a web tier from a database tier, or restricting which subnets can reach each other.",
+      "when_to_use_b": "Use Azure Firewall when you need centralized, application-aware traffic inspection across an entire hub-and-spoke topology, require FQDN filtering, threat intelligence blocking, or signature-based IDPS, especially for north-south internet egress control.",
+      "exam_traps": [
+        "The exam states 'NSGs are stateless' in some contexts and 'stateful' in others \u2014 NSGs ARE stateful (return traffic is auto-allowed), but the exam may contrast them with Azure Firewall as 'stateless packet filters' to mean NSGs lack deep stateful session inspection. Read carefully for what dimension is being tested.",
+        "A question may describe needing to block traffic to a known malicious IP automatically \u2014 this requires Azure Firewall with Threat Intel, not an NSG (NSGs have no threat intel feed).",
+        "NSG and Azure Firewall can coexist \u2014 traffic passes both. The exam may ask which is evaluated first; NSGs on the subnet/NIC are evaluated, and separately UDR-routed traffic hits the firewall. They are not mutually exclusive.",
+        "Azure Firewall Basic supports Threat Intel in alert-only mode \u2014 if a question asks which SKU can actively block malicious traffic, the answer is Standard or Premium, not Basic.",
+        "IDPS is Premium-only \u2014 if the scenario involves detecting exploit patterns or malware signatures, only Premium qualifies; Standard does not."
+      ],
+      "memory_tip": "NSG = 'No Smart Guards' (simple rules, no threat awareness, attached to the door). Azure Firewall = 'Armed Federal Inspector' (centralized, smart, sees everything, knows known criminals).",
+      "generated_at": "2026-04-20T12:23:05.502257"
+    },
+    {
+      "topic_a": "Azure Active Directory",
+      "topic_b": "Role Based Access Control",
+      "one_line_distinction": "Entra ID answers 'who are you?' (authentication and identity), while Azure RBAC answers 'what can you do?' (authorization on Azure resources).",
+      "analogy": "Entra ID is the building's front desk that verifies your ID badge and confirms you work there; RBAC is the keycard access system that controls which floors and rooms you can enter once you're inside.",
+      "key_differences": [
+        {
+          "dimension": "Primary purpose",
+          "topic_a": "Identity provider \u2014 authenticates users, devices, and apps and issues tokens",
+          "topic_b": "Authorization system \u2014 controls what actions an authenticated identity can perform on Azure resources"
+        },
+        {
+          "dimension": "Protocols / plane",
+          "topic_a": "OAuth 2.0, OpenID Connect, SAML \u2014 modern identity protocols for authentication",
+          "topic_b": "Azure Resource Manager API enforcement \u2014 operates on the management plane (and optionally data plane)"
+        },
+        {
+          "dimension": "Scope of control",
+          "topic_a": "Manages identities across Microsoft 365, Azure, SaaS apps, and external users globally",
+          "topic_b": "Scoped strictly to Azure resources: management group, subscription, resource group, or resource"
+        },
+        {
+          "dimension": "What you assign",
+          "topic_a": "Entra ID roles (e.g., Global Administrator, User Administrator) to manage the directory itself",
+          "topic_b": "RBAC role assignments (Owner, Contributor, Reader, custom) to grant access to Azure resources"
+        },
+        {
+          "dimension": "Permission model",
+          "topic_a": "Role-based within Entra ID; some roles are fixed and not customizable (e.g., Global Admin)",
+          "topic_b": "Additive model \u2014 effective permissions are the union of all role assignments; deny assignments override all grants"
+        },
+        {
+          "dimension": "Where it lives",
+          "topic_a": "Tenant/directory level \u2014 one Entra ID tenant can back many subscriptions",
+          "topic_b": "Azure Resource Manager \u2014 enforced per subscription/resource group/resource hierarchy"
+        },
+        {
+          "dimension": "Custom extensibility",
+          "topic_a": "Limited custom roles in Entra ID; Conditional Access policies add dynamic controls",
+          "topic_b": "Fully custom role definitions with fine-grained Actions, NotActions, DataActions, NotDataActions"
+        }
+      ],
+      "when_to_use_a": "Use Entra ID when the problem is about identity: creating users, enforcing MFA, enabling SSO, managing guest access (B2B), protecting risky sign-ins, or governing the identity lifecycle (joiner/mover/leaver).",
+      "when_to_use_b": "Use Azure RBAC when the problem is about resource access: granting a person or service the ability to read, modify, or manage specific Azure resources (VMs, storage accounts, key vaults) at a defined scope.",
+      "exam_traps": [
+        "A question gives a user an Entra ID role (e.g., Global Administrator) and asks if they can manage Azure subscriptions \u2014 Global Admin does NOT automatically grant Azure resource access; an RBAC Owner/Contributor role is required separately.",
+        "Scenario asks who can 'manage access' to a resource group \u2014 Contributor cannot assign roles; only Owner or User Access Administrator (RBAC roles) can, not Entra ID admins by default.",
+        "Question mentions 'deny access to a specific storage blob even though the user has Contributor' \u2014 answer is a Deny Assignment (RBAC), not an Entra ID Conditional Access policy.",
+        "Exam conflates 'Azure AD roles' and 'Azure RBAC roles' \u2014 remember they are two completely separate role systems; being a User Administrator in Entra ID gives zero Azure resource permissions.",
+        "Conditional Access (Entra ID) can block sign-in to Azure portal, but it does NOT replace RBAC \u2014 even if the user gets through Conditional Access, RBAC still controls what they can do once inside."
+      ],
+      "memory_tip": "AAD = **Authentication** (who you ARE); RBAC = **Resource** access (what you can **DO**). If the question mentions users, sign-ins, MFA, or the directory \u2192 AAD. If it mentions subscriptions, resource groups, VMs, or permissions \u2192 RBAC.",
+      "generated_at": "2026-04-20T12:24:23.728608"
+    },
+    {
+      "topic_a": "Virtual Networks",
+      "topic_b": "Network Security Groups",
+      "one_line_distinction": "A VNet is the private network infrastructure that defines where resources live and how they connect; an NSG is the rule-based filter that controls what traffic is allowed to flow through that infrastructure.",
+      "analogy": "A VNet is the road system of a city (streets, highways, on-ramps); an NSG is the traffic checkpoint or toll gate placed at specific roads that decides which vehicles can pass based on their plates, destination, and cargo.",
+      "key_differences": [
+        {
+          "dimension": "Primary purpose",
+          "topic_a": "Provides isolation, IP addressing, routing, and connectivity (peering, VPN, ExpressRoute) for Azure resources",
+          "topic_b": "Filters allow/deny traffic using 5-tuple rules evaluated by priority"
+        },
+        {
+          "dimension": "What it is",
+          "topic_a": "A logical network boundary \u2014 a container for subnets, routes, and connected resources",
+          "topic_b": "A stateful firewall rule set attached to a subnet or NIC"
+        },
+        {
+          "dimension": "Association / scope",
+          "topic_a": "Resources (VMs, subnets, gateways) live inside a VNet; one VNet per region per deployment",
+          "topic_b": "Attached to a subnet or NIC; one NSG can be associated with many subnets/NICs and vice versa"
+        },
+        {
+          "dimension": "Traffic direction awareness",
+          "topic_a": "Defines routing paths but has no inherent allow/deny logic",
+          "topic_b": "Stateful \u2014 return traffic for allowed sessions is automatically permitted without an explicit rule"
+        },
+        {
+          "dimension": "Cost",
+          "topic_a": "The VNet itself is free; charges come from attached resources (VPN gateways, public IPs)",
+          "topic_b": "NSGs are free; no charge per rule or association"
+        },
+        {
+          "dimension": "Transitive behavior",
+          "topic_a": "Peering is NOT transitive \u2014 A\u2194B and B\u2194C does not mean A\u2194C without direct peering or hub NVA",
+          "topic_b": "Rules are evaluated independently at each association point; no concept of transitivity"
+        },
+        {
+          "dimension": "Layering",
+          "topic_a": "Foundational layer \u2014 must exist before NSGs, VMs, or gateways can be deployed",
+          "topic_b": "Optional security layer applied on top of an existing VNet/subnet/NIC"
+        }
+      ],
+      "when_to_use_a": "When you need to define network topology \u2014 create isolated environments, segment workloads into subnets, connect on-premises networks, or peer two networks together.",
+      "when_to_use_b": "When you need to control which traffic is allowed or denied between resources \u2014 restrict ports, block IP ranges, or enforce least-privilege access at the subnet or VM level.",
+      "exam_traps": [
+        "The exam may describe a scenario where traffic is blocked and ask which resource to modify \u2014 if the VNet and subnets are correctly configured but traffic is denied, the answer is the NSG, not the VNet.",
+        "NSG rules apply at both subnet AND NIC level simultaneously \u2014 traffic must pass both; candidates assume only one NSG is evaluated.",
+        "Candidates confuse 'lower priority number' with 'lower importance' \u2014 priority 100 is processed BEFORE priority 200, so a deny at 100 blocks traffic even if an allow exists at 200.",
+        "VNet peering connects networks but does NOT bypass NSGs \u2014 after peering, NSG rules on each VNet still filter traffic independently.",
+        "A scenario asking how to allow load balancer health probes requires the AzureLoadBalancer service tag in the NSG \u2014 blocking it silently marks backends unhealthy, not the VNet configuration.",
+        "Moving a VM to a different VNet requires delete-and-recreate, but moving an NSG association to a different subnet is just a reassociation \u2014 these are often conflated."
+      ],
+      "memory_tip": "VNet = the CITY (layout, roads, districts); NSG = the CHECKPOINT GUARD (checks your ID at each gate). You build the city first, then post guards where needed.",
+      "generated_at": "2026-04-20T12:24:53.796156"
+    }
+  ]
 }

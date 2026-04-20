@@ -1,0 +1,58 @@
+{
+  "topic": "Azure Storage Accounts",
+  "summary": "An Azure Storage Account is a container that holds all Azure Storage data objects including blobs, files, queues, and tables, accessible globally over HTTP/HTTPS. It provides a unique namespace and offers multiple account types optimized for different workloads and performance needs. Data is durable, highly available, secure, and massively scalable.",
+  "key_concepts": [
+    {
+      "concept": "Standard General-Purpose v2",
+      "explanation": "The default and recommended storage account type supporting blobs, files, queues, and tables with the widest redundancy options including LRS, GRS, ZRS, and GZRS."
+    },
+    {
+      "concept": "Premium Block Blobs",
+      "explanation": "SSD-backed account type optimized for high transaction rates, small objects, or consistently low latency; supports block and append blobs only."
+    },
+    {
+      "concept": "Premium File Shares",
+      "explanation": "SSD-backed account type for Azure Files only, supporting both SMB and NFS protocols; suited for enterprise or high-performance file workloads."
+    },
+    {
+      "concept": "Premium Page Blobs",
+      "explanation": "SSD-backed account type exclusively for page blobs, typically used for VM disks and scenarios requiring random read/write access."
+    },
+    {
+      "concept": "Storage Account Naming Rules",
+      "explanation": "Names must be 3-24 characters, lowercase letters and numbers only, and globally unique across all of Azure."
+    },
+    {
+      "concept": "Redundancy Options",
+      "explanation": "LRS (single region, 3 copies), GRS (two regions), ZRS (three availability zones), GZRS (zones + secondary region), RA-GRS/RA-GZRS (read access to secondary). ZRS and GZRS are not available for all account types."
+    },
+    {
+      "concept": "Account Type Immutability",
+      "explanation": "You cannot change a storage account type after creation; you must create a new account and copy data to it."
+    }
+  ],
+  "exam_focus_points": [
+    "Know which storage services (blob, file, queue, table) are supported by each account type",
+    "Standard General-Purpose v2 is the recommended default for most scenarios",
+    "Premium account types use SSDs and are designed for low latency and high throughput",
+    "ZRS and GZRS are only available for specific account types and regions \u2014 not all account types support zone redundancy",
+    "Storage account names must be globally unique, 3-24 chars, lowercase alphanumeric only",
+    "You cannot convert a storage account from one type to another \u2014 you must create new and migrate data",
+    "Premium File Shares is the only account type supporting both SMB and NFS file shares",
+    "Data Lake Storage is built on top of Blob Storage (not a separate storage service type)"
+  ],
+  "similar_concepts": [
+    "Azure Managed Disks (often confused with Premium Page Blobs for VM storage)",
+    "Azure Data Lake Storage Gen2 (built on Blob Storage, not a separate account type)",
+    "Azure Files vs Azure Blob Storage (both store data but for different access patterns)",
+    "LRS vs ZRS vs GRS vs GZRS redundancy options"
+  ],
+  "common_mistakes": [
+    "Thinking you can change a storage account type after creation \u2014 you cannot, you must create a new one and copy data",
+    "Assuming all redundancy options (ZRS, GZRS) are available for all account types \u2014 they are not available for all types or regions",
+    "Confusing Premium Block Blobs (for blobs) with Premium File Shares (for files) \u2014 they support different storage services",
+    "Thinking Data Lake Storage is a separate storage account type \u2014 it is a capability set built on top of Blob Storage",
+    "Using uppercase letters or special characters in storage account names \u2014 only lowercase alphanumeric is allowed",
+    "Assuming Premium storage accounts support all storage services \u2014 each Premium type supports only a subset"
+  ]
+}
