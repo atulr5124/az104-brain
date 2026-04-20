@@ -377,6 +377,51 @@ def calculate_domain_scores(answers):
 
     return domain_stats
 
+def update_claude_memory_from_exam(progress):
+    """
+    Same as quiz.py's update_claude_memory — updates global memory
+    after a mock exam completes. Kept separate to avoid import coupling.
+    """
+    memory_file = os.path.expanduser("~/.claude/CLAUDE.md")
+    weak_areas = progress.get("weak_areas", [])
+
+    if weak_areas:
+        weak_list = "\n".join(
+            f"- {w['topic_name']}: {w['accuracy']}% accuracy"
+            for w in weak_areas
+        )
+        memory_block = f"""## AZ-104 Study — Current Weak Areas
+Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+{weak_list}
+"""
+    else:
+        memory_block = f"""## AZ-104 Study — Current Weak Areas
+Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+No weak areas identified yet. Keep quizzing.
+"""
+
+    if os.path.exists(memory_file):
+        with open(memory_file, "r") as f:
+            existing = f.read()
+    else:
+        existing = ""
+
+    marker = "## AZ-104 Study — Current Weak Areas"
+    if marker in existing:
+        start = existing.find(marker)
+        next_section = existing.find("\n## ", start + 1)
+        if next_section == -1:
+            updated = existing[:start] + memory_block
+        else:
+            updated = existing[:start] + memory_block + existing[next_section:]
+    else:
+        updated = existing.rstrip() + "\n\n" + memory_block
+
+    with open(memory_file, "w") as f:
+        f.write(updated)
+
+    print(f"\nClaude memory updated with {len(weak_areas)} weak area(s).")
+
 
 # ─── REPORT ───────────────────────────────────────────────────────────────────
 
@@ -486,6 +531,9 @@ def generate_report(answers, elapsed_seconds):
 
     print(f"\nFull report saved: {report_path}")
     print("="*60)
+
+    # Update global Claude memory with weak areas from this exam
+    update_claude_memory_from_exam(progress)
 
     return report
 

@@ -179,6 +179,76 @@
       "correct": false,
       "difficulty": "medium",
       "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T18:07:15.954100",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "A company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A cannot communicate with a virtual machine in VNet-C. What is the most likely reason?",
+      "correct_answer": "A",
+      "user_answer": "A",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:08:02.628111",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A attempts to communicate with a virtual machine in VNet-C. What is the result?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:08:37.392799",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A cannot communicate with a VM in VNet-C. What is the most likely reason?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:09:18.213439",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A is unable to communicate with a virtual machine in VNet-C. What is the most likely reason?",
+      "correct_answer": "B",
+      "user_answer": "C",
+      "correct": false,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:09:43.994284",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What must you do to enable this communication?",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:14:18.986543",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What must you do to enable this communication?",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T18:14:58.192189",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What must you do to enable this communication?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
     }
   ],
   "weak_areas": [
@@ -186,7 +256,7 @@
       "topic_id": "virtual_networks",
       "topic_name": "Virtual Networks",
       "accuracy": 57.1,
-      "questions_answered": 7
+      "questions_answered": 14
     },
     {
       "topic_id": "network_security_groups",
@@ -231,6 +301,6 @@
       "questions_answered": 1
     }
   ],
-  "total_questions_answered": 17,
-  "total_correct": 7
+  "total_questions_answered": 24,
+  "total_correct": 11
 }

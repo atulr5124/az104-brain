@@ -214,6 +214,60 @@ def display_result(question, result):
 
     print("="*60 + "\n")
 
+def update_claude_memory(progress):
+    """
+    Updates ~/.claude/CLAUDE.md with current weak areas after every session.
+    This means Claude knows your weak areas in any project, not just this one.
+
+    We read the existing memory file, find and replace the az104 weak areas
+    section, and write it back. If the section doesn't exist yet, we append it.
+    """
+    memory_file = os.path.expanduser("~/.claude/CLAUDE.md")
+    weak_areas = progress.get("weak_areas", [])
+
+    # Build the memory block we want to maintain
+    if weak_areas:
+        weak_list = "\n".join(
+            f"- {w['topic_name']}: {w['accuracy']}% accuracy"
+            for w in weak_areas
+        )
+        memory_block = f"""## AZ-104 Study — Current Weak Areas
+Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+{weak_list}
+"""
+    else:
+        memory_block = f"""## AZ-104 Study — Current Weak Areas
+Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+No weak areas identified yet. Keep quizzing.
+"""
+
+    # Read existing memory file
+    if os.path.exists(memory_file):
+        with open(memory_file, "r") as f:
+            existing = f.read()
+    else:
+        existing = ""
+
+    # Replace existing weak areas block if present, otherwise append
+    marker = "## AZ-104 Study — Current Weak Areas"
+    if marker in existing:
+        # Find and replace the entire block
+        start = existing.find(marker)
+        # Find the next ## heading or end of file
+        next_section = existing.find("\n## ", start + 1)
+        if next_section == -1:
+            # No next section — replace to end of file
+            updated = existing[:start] + memory_block
+        else:
+            updated = existing[:start] + memory_block + existing[next_section:]
+    else:
+        # Append to existing memory
+        updated = existing.rstrip() + "\n\n" + memory_block
+
+    with open(memory_file, "w") as f:
+        f.write(updated)
+
+    print(f"\nClaude memory updated with {len(weak_areas)} weak area(s).")
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 
@@ -290,6 +344,8 @@ def main():
             for area in progress["weak_areas"]:
                 print(f"  - {area['topic_name']}: {area['accuracy']}% accuracy")
 
+    # Update global Claude memory with current weak areas
+    update_claude_memory(progress)
 
 if __name__ == "__main__":
     main()
