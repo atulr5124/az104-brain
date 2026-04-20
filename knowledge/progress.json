@@ -1,6 +1,47 @@
 {
-  "sessions": [],
+  "sessions": [
+    {
+      "timestamp": "2026-04-20T12:28:24.316087",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What must you do to enable this connectivity?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:29:04.734539",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your organization has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What is required to enable this communication?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:29:42.823196",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "A company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A cannot communicate with a virtual machine in VNet-C. What is the most likely reason?",
+      "correct_answer": "A",
+      "user_answer": "A",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:30:37.115229",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "A company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A cannot communicate with a VM in VNet-C. What is the most likely reason?",
+      "correct_answer": "B",
+      "user_answer": "D",
+      "correct": false,
+      "difficulty": "medium"
+    }
+  ],
   "weak_areas": [],
-  "total_questions_answered": 0,
-  "total_correct": 0
+  "total_questions_answered": 4,
+  "total_correct": 3
 }
