@@ -5,6 +5,7 @@ import os
 import sys
 import subprocess
 from datetime import datetime
+from tracker import claude_call
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 
@@ -95,11 +96,7 @@ DOCUMENTATION TEXT:
 """
     # Call Claude in headless mode with -p flag
     # --output-format json tells Claude Code to return clean output
-    result = subprocess.run(
-        ["claude", "-p", prompt],
-        capture_output=True,
-        text=True
-    )
+    result = claude_call(prompt, operation_name="ingest_topic")
 
     if result.returncode != 0:
         print(f"Claude error: {result.stderr}")

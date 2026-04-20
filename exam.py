@@ -5,6 +5,7 @@ import subprocess
 import time
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from tracker import claude_call
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 
@@ -162,11 +163,7 @@ Return ONLY this JSON, no markdown, no backticks:
   "difficulty": "easy|medium|hard"
 }}
 """
-        result = subprocess.run(
-            ["claude", "-p", prompt],
-            capture_output=True,
-            text=True
-        )
+        result = claude_call(prompt, operation_name="generate_exam_question")
 
         if result.returncode != 0:
             print(f"  [FAIL] Question {i+1} for {topic['topic']}: {result.stderr[:80]}")

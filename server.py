@@ -3,6 +3,9 @@ import json
 import os
 import subprocess
 import sys
+from tracker import print_cost_report
+import io
+import sys
 
 app = Flask(__name__, static_folder="public")
 
@@ -386,6 +389,13 @@ def get_exams():
             })
 
     return jsonify(exams)
+
+@app.route("/api/costs", methods=["GET"])
+def get_costs():
+    """Returns cost summary for the UI."""
+    if not os.path.exists(".claude/cost_summary.json"):
+        return jsonify({"message": "No cost data yet"})
+    return jsonify(load_json(".claude/cost_summary.json"))
 
 if __name__ == "__main__":
     print("az104-brain server starting...")
