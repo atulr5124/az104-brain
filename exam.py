@@ -46,7 +46,7 @@ DOMAINS = {
     }
 }
 
-TOTAL_QUESTIONS = 10
+TOTAL_QUESTIONS = 50
 EXAM_DURATION_MINUTES = 150
 PASS_SCORE = 700  # Microsoft's passing threshold out of 1000
 OS_MAKEDIRS = os.makedirs(EXAMS_DIR, exist_ok=True)
