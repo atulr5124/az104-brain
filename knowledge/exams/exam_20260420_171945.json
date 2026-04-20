@@ -1,0 +1,292 @@
+{
+  "exam_date": "2026-04-20T17:19:45.576485",
+  "total_questions": 10,
+  "correct": 2,
+  "score": 200,
+  "passed": false,
+  "time_taken": "10m 25s",
+  "domain_scores": {
+    "storage": {
+      "name": "Implement and manage storage",
+      "correct": 1,
+      "total": 2,
+      "questions": [
+        {
+          "question_num": 1,
+          "question": "A developer needs to migrate an application that stores VM disk images requiring frequent random read/write access. After creation, they realize they need zone-redundant storage for resiliency. Which of the following statements is true about their options?",
+          "topic": "Azure Storage Accounts",
+          "domain": "Implement and manage storage",
+          "domain_id": "storage",
+          "correct_answer": "C",
+          "user_answer": "B",
+          "correct": false,
+          "explanation": "Premium Page Blobs accounts do not support ZRS or GZRS redundancy \u2014 zone redundancy is only available for Standard General-Purpose v2 and Premium Block Blobs/File Shares accounts (and only in supported regions). If zone redundancy is required alongside page blob storage for VM disks, the correct approach is to use Standard General-Purpose v2 with ZRS, which supports page blobs and zone redundancy. Option A is incorrect because Premium Page Blobs does not support ZRS. Option B is incorrect because you cannot change redundancy on an existing account if the account type doesn't support the target redundancy tier \u2014 and more critically, Premium Page Blobs simply doesn't support ZRS. Option D is doubly wrong: you cannot convert a storage account type after creation at all.",
+          "difficulty": "hard"
+        },
+        {
+          "question_num": 3,
+          "question": "Your company needs a storage account to host Azure File Shares for a Linux-based HPC cluster requiring NFS protocol support with low latency. Which storage account type should you create?",
+          "topic": "Azure Storage Accounts",
+          "domain": "Implement and manage storage",
+          "domain_id": "storage",
+          "correct_answer": "B",
+          "user_answer": "B",
+          "correct": true,
+          "explanation": "Premium File Shares is the only storage account type that supports NFS protocol for Azure Files, in addition to SMB. It uses SSD-backed storage suited for high-performance and low-latency workloads like HPC clusters. Standard General-Purpose v2 supports Azure Files but only via SMB, not NFS \u2014 ruling out both A and D. Premium Block Blobs supports only block and append blobs, not file shares \u2014 ruling out C.",
+          "difficulty": "medium"
+        }
+      ],
+      "accuracy": 50.0
+    },
+    "compute": {
+      "name": "Deploy and manage Azure compute resources",
+      "correct": 0,
+      "total": 2,
+      "questions": [
+        {
+          "question_num": 2,
+          "question": "Your team has received approval to increase the VM core quota in East US from 20 to 100 cores. You attempt to deploy a 96-core VM immediately after approval is granted, but the deployment fails. What is the most likely reason?",
+          "topic": "Azure Virtual Machines",
+          "domain": "Deploy and manage Azure compute resources",
+          "domain_id": "compute",
+          "correct_answer": "B",
+          "user_answer": "D",
+          "correct": false,
+          "explanation": "Quota approval and regional capacity are checked independently. Quota sets the maximum you are *allowed* to request, but Azure must also have physical capacity available in that region for the specific VM size. If regional capacity is constrained, the deployment fails even with a valid quota. A is incorrect because quota changes take effect immediately. C is false \u2014 VM sizes like M-series and HPC SKUs exceed 64 cores. D is incorrect; spending limits are a separate billing concept and do not block individual deployments.",
+          "difficulty": "medium"
+        },
+        {
+          "question_num": 8,
+          "question": "Your company requires that encryption keys used by Azure Virtual Machines must be protected by hardware security modules (HSMs) validated to FIPS 140-3 Level 3. You plan to store these keys in Azure Key Vault. Which Key Vault configuration satisfies this requirement?",
+          "topic": "Azure Key Vault",
+          "domain": "Deploy and manage Azure compute resources",
+          "domain_id": "compute",
+          "correct_answer": "B",
+          "user_answer": "C",
+          "correct": false,
+          "explanation": "Only the Premium tier of Azure Key Vault supports HSM-backed keys validated to FIPS 140-3 Level 3. Within the Premium tier, you must explicitly choose HSM-protected keys \u2014 simply selecting Premium tier is not enough if you use software-protected keys (option D). The Standard tier uses software-based FIPS 140 Level 1 cryptography and has no HSM backing regardless of other settings (options A and C). Enabling soft-delete or Azure RBAC (options A and C) are access/retention controls unrelated to HSM protection.",
+          "difficulty": "medium"
+        }
+      ],
+      "accuracy": 0.0
+    },
+    "identities_governance": {
+      "name": "Manage Azure identities and governance",
+      "correct": 1,
+      "total": 2,
+      "questions": [
+        {
+          "question_num": 4,
+          "question": "A security team has assigned a user the Contributor role at the subscription scope. A deny assignment has been applied to a specific resource group within that subscription, blocking the 'Microsoft.Compute/virtualMachines/write' action. What happens when the user attempts to create a virtual machine in that resource group?",
+          "topic": "Role Based Access Control",
+          "domain": "Manage Azure identities and governance",
+          "domain_id": "identities_governance",
+          "correct_answer": "A",
+          "user_answer": "A",
+          "correct": true,
+          "explanation": "Deny assignments explicitly block actions and always take precedence over role assignments, regardless of scope level or order of creation. Even though the Contributor role at subscription scope would normally allow creating VMs everywhere in that subscription, the deny assignment on the resource group blocks that specific action. Option B is wrong because RBAC is additive but deny assignments override all grants \u2014 scope hierarchy does not override deny assignments. Option C is wrong because the timing of creation is irrelevant; deny assignments always win. Option D is wrong because deny assignments apply to any security principal they target, including those with active role assignments.",
+          "difficulty": "medium"
+        },
+        {
+          "question_num": 6,
+          "question": "Your organization runs a legacy line-of-business application that requires Kerberos authentication and LDAP queries to function. The application cannot be modified to use modern authentication protocols. You need to provide domain services for this application with minimal administrative overhead. What should you deploy?",
+          "topic": "Azure Active Directory",
+          "domain": "Manage Azure identities and governance",
+          "domain_id": "identities_governance",
+          "correct_answer": "A",
+          "user_answer": "D",
+          "correct": false,
+          "explanation": "Microsoft Entra Domain Services is a managed service that provides legacy protocols including Kerberos, NTLM, and LDAP without requiring you to deploy or manage domain controllers \u2014 matching the 'minimal administrative overhead' requirement. Option B (Password Hash Sync) enables hybrid identity but does not expose Kerberos or LDAP endpoints to applications. Option C (AD DS on VMs) would work technically but requires you to provision, patch, and manage the VMs and domain controllers yourself, which is high overhead. Option D (seamless SSO) provides transparent SSO for Azure AD-joined devices using Kerberos tickets toward Azure AD, but it does not expose a full LDAP/Kerberos domain that a legacy app can query directly.",
+          "difficulty": "medium"
+        }
+      ],
+      "accuracy": 50.0
+    },
+    "monitoring": {
+      "name": "Monitor and maintain Azure resources",
+      "correct": 0,
+      "total": 2,
+      "questions": [
+        {
+          "question_num": 5,
+          "question": "Your team has deployed a new Azure Virtual Machine and wants to collect custom performance counters and Windows Event Logs, then send them to a Log Analytics workspace for querying. Which mechanism should you configure on the VM to control what data is collected and where it is sent?",
+          "topic": "Azure Monitor",
+          "domain": "Monitor and maintain Azure resources",
+          "domain_id": "monitoring",
+          "correct_answer": "B",
+          "user_answer": "C",
+          "correct": false,
+          "explanation": "Data Collection Rules (DCRs) are the correct mechanism for defining what telemetry to collect from a resource (such as specific performance counters or event logs) and where to route it (such as a Log Analytics workspace). DCRs are associated with the Azure Monitor Agent installed on the VM and provide granular, reusable control over data collection. Option A is incorrect: Diagnostic Settings are used to route platform-level resource logs and metrics (not guest OS data like Windows Event Logs or custom performance counters) to destinations. Option C is incorrect: Application Insights is for APM of web applications, not infrastructure-level OS metrics from a VM. Option D is incorrect: Microsoft Defender for Cloud provides security posture management and threat detection \u2014 it does not configure custom performance counter collection.",
+          "difficulty": "medium"
+        },
+        {
+          "question_num": 9,
+          "question": "Your organization needs to back up Azure Managed Disks and AKS clusters to meet a long-term retention policy. A colleague suggests using a Recovery Services vault for all backup workloads. What should you do?",
+          "topic": "Azure Backup",
+          "domain": "Monitor and maintain Azure resources",
+          "domain_id": "monitoring",
+          "correct_answer": "A",
+          "user_answer": "C",
+          "correct": false,
+          "explanation": "Azure Managed Disks and AKS (Kubernetes) backups require a Backup vault \u2014 not a Recovery Services vault. The Backup vault is the newer vault type introduced specifically for these workloads. Recovery Services vaults support Azure VMs, SQL Server, SAP HANA, Azure Files, and similar traditional workloads. Option B is wrong because GRS replication is a valid setting but Recovery Services vaults still cannot back up Managed Disks. Option C is wrong because MARS agent backs up files/folders/system state, not container workloads. Option D is wrong because Azure Site Recovery is for disaster recovery and VM replication/failover, not data backup for AKS.",
+          "difficulty": "medium"
+        }
+      ],
+      "accuracy": 0.0
+    },
+    "networking": {
+      "name": "Implement and manage virtual networking",
+      "correct": 0,
+      "total": 2,
+      "questions": [
+        {
+          "question_num": 7,
+          "question": "A junior administrator removes the NSG rule that was allowing SSH (port 22) inbound to a VM. An operations engineer currently has an active SSH session to that VM. What happens to the active session and future SSH connections?",
+          "topic": "Network Security Groups",
+          "domain": "Implement and manage virtual networking",
+          "domain_id": "networking",
+          "correct_answer": "B",
+          "user_answer": "A",
+          "correct": false,
+          "explanation": "NSG rule changes only affect new connections \u2014 existing active connections (tracked via connection state) remain unaffected until they close naturally. Once the allowing rule is removed, any new SSH connection attempts will hit the DenyAllInbound default rule (priority 65500) and be blocked. Option A is wrong because existing connections are not interrupted. Option C is wrong because AllowVNetInBound (65000) only applies within the same VNet and would not override a missing explicit allow rule in the way implied; more importantly, if the SSH rule was explicitly required before, removing it means new connections are denied. Option D is wrong because Azure has no such grace period mechanism.",
+          "difficulty": "medium"
+        },
+        {
+          "question_num": 10,
+          "question": "Your company has three Azure VNets: VNet-A (East US), VNet-B (East US), and VNet-C (West US). VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A cannot communicate with a VM in VNet-C. What is the MOST likely cause?",
+          "topic": "Virtual Networks",
+          "domain": "Implement and manage virtual networking",
+          "domain_id": "networking",
+          "correct_answer": "B",
+          "user_answer": "A",
+          "correct": false,
+          "explanation": "VNet peering is NOT transitive. Even though VNet-A peers with VNet-B and VNet-B peers with VNet-C, traffic cannot flow from VNet-A to VNet-C through VNet-B automatically. To enable this, you need either a direct peering between VNet-A and VNet-C, or a hub-spoke topology with an NVA or VPN gateway configured for gateway transit. Option A is wrong because global VNet peering does support cross-region connectivity. Option C is wrong because VNet peering works across subscriptions and tenants. Option D is wrong because VNets span all availability zones in a region and peering has no AZ requirements.",
+          "difficulty": "medium"
+        }
+      ],
+      "accuracy": 0.0
+    }
+  },
+  "answers": [
+    {
+      "question_num": 1,
+      "question": "A developer needs to migrate an application that stores VM disk images requiring frequent random read/write access. After creation, they realize they need zone-redundant storage for resiliency. Which of the following statements is true about their options?",
+      "topic": "Azure Storage Accounts",
+      "domain": "Implement and manage storage",
+      "domain_id": "storage",
+      "correct_answer": "C",
+      "user_answer": "B",
+      "correct": false,
+      "explanation": "Premium Page Blobs accounts do not support ZRS or GZRS redundancy \u2014 zone redundancy is only available for Standard General-Purpose v2 and Premium Block Blobs/File Shares accounts (and only in supported regions). If zone redundancy is required alongside page blob storage for VM disks, the correct approach is to use Standard General-Purpose v2 with ZRS, which supports page blobs and zone redundancy. Option A is incorrect because Premium Page Blobs does not support ZRS. Option B is incorrect because you cannot change redundancy on an existing account if the account type doesn't support the target redundancy tier \u2014 and more critically, Premium Page Blobs simply doesn't support ZRS. Option D is doubly wrong: you cannot convert a storage account type after creation at all.",
+      "difficulty": "hard"
+    },
+    {
+      "question_num": 2,
+      "question": "Your team has received approval to increase the VM core quota in East US from 20 to 100 cores. You attempt to deploy a 96-core VM immediately after approval is granted, but the deployment fails. What is the most likely reason?",
+      "topic": "Azure Virtual Machines",
+      "domain": "Deploy and manage Azure compute resources",
+      "domain_id": "compute",
+      "correct_answer": "B",
+      "user_answer": "D",
+      "correct": false,
+      "explanation": "Quota approval and regional capacity are checked independently. Quota sets the maximum you are *allowed* to request, but Azure must also have physical capacity available in that region for the specific VM size. If regional capacity is constrained, the deployment fails even with a valid quota. A is incorrect because quota changes take effect immediately. C is false \u2014 VM sizes like M-series and HPC SKUs exceed 64 cores. D is incorrect; spending limits are a separate billing concept and do not block individual deployments.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 3,
+      "question": "Your company needs a storage account to host Azure File Shares for a Linux-based HPC cluster requiring NFS protocol support with low latency. Which storage account type should you create?",
+      "topic": "Azure Storage Accounts",
+      "domain": "Implement and manage storage",
+      "domain_id": "storage",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "explanation": "Premium File Shares is the only storage account type that supports NFS protocol for Azure Files, in addition to SMB. It uses SSD-backed storage suited for high-performance and low-latency workloads like HPC clusters. Standard General-Purpose v2 supports Azure Files but only via SMB, not NFS \u2014 ruling out both A and D. Premium Block Blobs supports only block and append blobs, not file shares \u2014 ruling out C.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 4,
+      "question": "A security team has assigned a user the Contributor role at the subscription scope. A deny assignment has been applied to a specific resource group within that subscription, blocking the 'Microsoft.Compute/virtualMachines/write' action. What happens when the user attempts to create a virtual machine in that resource group?",
+      "topic": "Role Based Access Control",
+      "domain": "Manage Azure identities and governance",
+      "domain_id": "identities_governance",
+      "correct_answer": "A",
+      "user_answer": "A",
+      "correct": true,
+      "explanation": "Deny assignments explicitly block actions and always take precedence over role assignments, regardless of scope level or order of creation. Even though the Contributor role at subscription scope would normally allow creating VMs everywhere in that subscription, the deny assignment on the resource group blocks that specific action. Option B is wrong because RBAC is additive but deny assignments override all grants \u2014 scope hierarchy does not override deny assignments. Option C is wrong because the timing of creation is irrelevant; deny assignments always win. Option D is wrong because deny assignments apply to any security principal they target, including those with active role assignments.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 5,
+      "question": "Your team has deployed a new Azure Virtual Machine and wants to collect custom performance counters and Windows Event Logs, then send them to a Log Analytics workspace for querying. Which mechanism should you configure on the VM to control what data is collected and where it is sent?",
+      "topic": "Azure Monitor",
+      "domain": "Monitor and maintain Azure resources",
+      "domain_id": "monitoring",
+      "correct_answer": "B",
+      "user_answer": "C",
+      "correct": false,
+      "explanation": "Data Collection Rules (DCRs) are the correct mechanism for defining what telemetry to collect from a resource (such as specific performance counters or event logs) and where to route it (such as a Log Analytics workspace). DCRs are associated with the Azure Monitor Agent installed on the VM and provide granular, reusable control over data collection. Option A is incorrect: Diagnostic Settings are used to route platform-level resource logs and metrics (not guest OS data like Windows Event Logs or custom performance counters) to destinations. Option C is incorrect: Application Insights is for APM of web applications, not infrastructure-level OS metrics from a VM. Option D is incorrect: Microsoft Defender for Cloud provides security posture management and threat detection \u2014 it does not configure custom performance counter collection.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 6,
+      "question": "Your organization runs a legacy line-of-business application that requires Kerberos authentication and LDAP queries to function. The application cannot be modified to use modern authentication protocols. You need to provide domain services for this application with minimal administrative overhead. What should you deploy?",
+      "topic": "Azure Active Directory",
+      "domain": "Manage Azure identities and governance",
+      "domain_id": "identities_governance",
+      "correct_answer": "A",
+      "user_answer": "D",
+      "correct": false,
+      "explanation": "Microsoft Entra Domain Services is a managed service that provides legacy protocols including Kerberos, NTLM, and LDAP without requiring you to deploy or manage domain controllers \u2014 matching the 'minimal administrative overhead' requirement. Option B (Password Hash Sync) enables hybrid identity but does not expose Kerberos or LDAP endpoints to applications. Option C (AD DS on VMs) would work technically but requires you to provision, patch, and manage the VMs and domain controllers yourself, which is high overhead. Option D (seamless SSO) provides transparent SSO for Azure AD-joined devices using Kerberos tickets toward Azure AD, but it does not expose a full LDAP/Kerberos domain that a legacy app can query directly.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 7,
+      "question": "A junior administrator removes the NSG rule that was allowing SSH (port 22) inbound to a VM. An operations engineer currently has an active SSH session to that VM. What happens to the active session and future SSH connections?",
+      "topic": "Network Security Groups",
+      "domain": "Implement and manage virtual networking",
+      "domain_id": "networking",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "explanation": "NSG rule changes only affect new connections \u2014 existing active connections (tracked via connection state) remain unaffected until they close naturally. Once the allowing rule is removed, any new SSH connection attempts will hit the DenyAllInbound default rule (priority 65500) and be blocked. Option A is wrong because existing connections are not interrupted. Option C is wrong because AllowVNetInBound (65000) only applies within the same VNet and would not override a missing explicit allow rule in the way implied; more importantly, if the SSH rule was explicitly required before, removing it means new connections are denied. Option D is wrong because Azure has no such grace period mechanism.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 8,
+      "question": "Your company requires that encryption keys used by Azure Virtual Machines must be protected by hardware security modules (HSMs) validated to FIPS 140-3 Level 3. You plan to store these keys in Azure Key Vault. Which Key Vault configuration satisfies this requirement?",
+      "topic": "Azure Key Vault",
+      "domain": "Deploy and manage Azure compute resources",
+      "domain_id": "compute",
+      "correct_answer": "B",
+      "user_answer": "C",
+      "correct": false,
+      "explanation": "Only the Premium tier of Azure Key Vault supports HSM-backed keys validated to FIPS 140-3 Level 3. Within the Premium tier, you must explicitly choose HSM-protected keys \u2014 simply selecting Premium tier is not enough if you use software-protected keys (option D). The Standard tier uses software-based FIPS 140 Level 1 cryptography and has no HSM backing regardless of other settings (options A and C). Enabling soft-delete or Azure RBAC (options A and C) are access/retention controls unrelated to HSM protection.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 9,
+      "question": "Your organization needs to back up Azure Managed Disks and AKS clusters to meet a long-term retention policy. A colleague suggests using a Recovery Services vault for all backup workloads. What should you do?",
+      "topic": "Azure Backup",
+      "domain": "Monitor and maintain Azure resources",
+      "domain_id": "monitoring",
+      "correct_answer": "A",
+      "user_answer": "C",
+      "correct": false,
+      "explanation": "Azure Managed Disks and AKS (Kubernetes) backups require a Backup vault \u2014 not a Recovery Services vault. The Backup vault is the newer vault type introduced specifically for these workloads. Recovery Services vaults support Azure VMs, SQL Server, SAP HANA, Azure Files, and similar traditional workloads. Option B is wrong because GRS replication is a valid setting but Recovery Services vaults still cannot back up Managed Disks. Option C is wrong because MARS agent backs up files/folders/system state, not container workloads. Option D is wrong because Azure Site Recovery is for disaster recovery and VM replication/failover, not data backup for AKS.",
+      "difficulty": "medium"
+    },
+    {
+      "question_num": 10,
+      "question": "Your company has three Azure VNets: VNet-A (East US), VNet-B (East US), and VNet-C (West US). VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A cannot communicate with a VM in VNet-C. What is the MOST likely cause?",
+      "topic": "Virtual Networks",
+      "domain": "Implement and manage virtual networking",
+      "domain_id": "networking",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "explanation": "VNet peering is NOT transitive. Even though VNet-A peers with VNet-B and VNet-B peers with VNet-C, traffic cannot flow from VNet-A to VNet-C through VNet-B automatically. To enable this, you need either a direct peering between VNet-A and VNet-C, or a hub-spoke topology with an NVA or VPN gateway configured for gateway transit. Option A is wrong because global VNet peering does support cross-region connectivity. Option C is wrong because VNet peering works across subscriptions and tenants. Option D is wrong because VNets span all availability zones in a region and peering has no AZ requirements.",
+      "difficulty": "medium"
+    }
+  ]
+}

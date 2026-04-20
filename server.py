@@ -357,6 +357,36 @@ Generate a personalised cram sheet. Return ONLY this JSON, no markdown:
 
 # ─── START SERVER ─────────────────────────────────────────────────────────────
 
+@app.route("/api/exams", methods=["GET"])
+def get_exams():
+    """Returns list of all past mock exam results."""
+    exams_dir = "knowledge/exams"
+    if not os.path.exists(exams_dir):
+        return jsonify([])
+
+    exams = []
+    for filename in sorted(os.listdir(exams_dir), reverse=True):
+        if filename.endswith(".json"):
+            path = os.path.join(exams_dir, filename)
+            with open(path, "r") as f:
+                exam = json.load(f)
+            # Return summary only — not all 50 questions
+            exams.append({
+                "filename": filename,
+                "exam_date": exam["exam_date"],
+                "score": exam["score"],
+                "passed": exam["passed"],
+                "correct": exam["correct"],
+                "total_questions": exam["total_questions"],
+                "time_taken": exam["time_taken"],
+                "domain_scores": {
+                    k: {"name": v["name"], "accuracy": v["accuracy"]}
+                    for k, v in exam["domain_scores"].items()
+                }
+            })
+
+    return jsonify(exams)
+
 if __name__ == "__main__":
     print("az104-brain server starting...")
     print("Open http://localhost:5000 in your browser")

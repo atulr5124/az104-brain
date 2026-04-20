@@ -69,9 +69,168 @@
       "user_answer": "B",
       "correct": true,
       "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600113",
+      "topic_id": "azure_storage_accounts",
+      "topic_name": "Azure Storage Accounts",
+      "question": "A developer needs to migrate an application that stores VM disk images requiring frequent random read/write access. After creation, they realize they need zone-redundant storage for resiliency. Which of the following statements is true about their options?",
+      "correct_answer": "C",
+      "user_answer": "B",
+      "correct": false,
+      "difficulty": "hard",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600131",
+      "topic_id": "azure_virtual_machines",
+      "topic_name": "Azure Virtual Machines",
+      "question": "Your team has received approval to increase the VM core quota in East US from 20 to 100 cores. You attempt to deploy a 96-core VM immediately after approval is granted, but the deployment fails. What is the most likely reason?",
+      "correct_answer": "B",
+      "user_answer": "D",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600136",
+      "topic_id": "azure_storage_accounts",
+      "topic_name": "Azure Storage Accounts",
+      "question": "Your company needs a storage account to host Azure File Shares for a Linux-based HPC cluster requiring NFS protocol support with low latency. Which storage account type should you create?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600140",
+      "topic_id": "role_based_access_control",
+      "topic_name": "Role Based Access Control",
+      "question": "A security team has assigned a user the Contributor role at the subscription scope. A deny assignment has been applied to a specific resource group within that subscription, blocking the 'Microsoft.Compute/virtualMachines/write' action. What happens when the user attempts to create a virtual machine in that resource group?",
+      "correct_answer": "A",
+      "user_answer": "A",
+      "correct": true,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600144",
+      "topic_id": "azure_monitor",
+      "topic_name": "Azure Monitor",
+      "question": "Your team has deployed a new Azure Virtual Machine and wants to collect custom performance counters and Windows Event Logs, then send them to a Log Analytics workspace for querying. Which mechanism should you configure on the VM to control what data is collected and where it is sent?",
+      "correct_answer": "B",
+      "user_answer": "C",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600148",
+      "topic_id": "azure_active_directory",
+      "topic_name": "Azure Active Directory",
+      "question": "Your organization runs a legacy line-of-business application that requires Kerberos authentication and LDAP queries to function. The application cannot be modified to use modern authentication protocols. You need to provide domain services for this application with minimal administrative overhead. What should you deploy?",
+      "correct_answer": "A",
+      "user_answer": "D",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600151",
+      "topic_id": "network_security_groups",
+      "topic_name": "Network Security Groups",
+      "question": "A junior administrator removes the NSG rule that was allowing SSH (port 22) inbound to a VM. An operations engineer currently has an active SSH session to that VM. What happens to the active session and future SSH connections?",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600155",
+      "topic_id": "azure_key_vault",
+      "topic_name": "Azure Key Vault",
+      "question": "Your company requires that encryption keys used by Azure Virtual Machines must be protected by hardware security modules (HSMs) validated to FIPS 140-3 Level 3. You plan to store these keys in Azure Key Vault. Which Key Vault configuration satisfies this requirement?",
+      "correct_answer": "B",
+      "user_answer": "C",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600159",
+      "topic_id": "azure_backup",
+      "topic_name": "Azure Backup",
+      "question": "Your organization needs to back up Azure Managed Disks and AKS clusters to meet a long-term retention policy. A colleague suggests using a Recovery Services vault for all backup workloads. What should you do?",
+      "correct_answer": "A",
+      "user_answer": "C",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
+    },
+    {
+      "timestamp": "2026-04-20T17:19:45.600162",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "Your company has three Azure VNets: VNet-A (East US), VNet-B (East US), and VNet-C (West US). VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A cannot communicate with a VM in VNet-C. What is the MOST likely cause?",
+      "correct_answer": "B",
+      "user_answer": "A",
+      "correct": false,
+      "difficulty": "medium",
+      "source": "mock_exam"
     }
   ],
-  "weak_areas": [],
-  "total_questions_answered": 7,
-  "total_correct": 5
+  "weak_areas": [
+    {
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "accuracy": 57.1,
+      "questions_answered": 7
+    },
+    {
+      "topic_id": "network_security_groups",
+      "topic_name": "Network Security Groups",
+      "accuracy": 50.0,
+      "questions_answered": 2
+    },
+    {
+      "topic_id": "azure_storage_accounts",
+      "topic_name": "Azure Storage Accounts",
+      "accuracy": 50.0,
+      "questions_answered": 2
+    },
+    {
+      "topic_id": "azure_virtual_machines",
+      "topic_name": "Azure Virtual Machines",
+      "accuracy": 0.0,
+      "questions_answered": 1
+    },
+    {
+      "topic_id": "azure_monitor",
+      "topic_name": "Azure Monitor",
+      "accuracy": 0.0,
+      "questions_answered": 1
+    },
+    {
+      "topic_id": "azure_active_directory",
+      "topic_name": "Azure Active Directory",
+      "accuracy": 0.0,
+      "questions_answered": 1
+    },
+    {
+      "topic_id": "azure_key_vault",
+      "topic_name": "Azure Key Vault",
+      "accuracy": 0.0,
+      "questions_answered": 1
+    },
+    {
+      "topic_id": "azure_backup",
+      "topic_name": "Azure Backup",
+      "accuracy": 0.0,
+      "questions_answered": 1
+    }
+  ],
+  "total_questions_answered": 17,
+  "total_correct": 7
 }
