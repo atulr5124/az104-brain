@@ -39,9 +39,39 @@
       "user_answer": "D",
       "correct": false,
       "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:46:58.525561",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "A company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A virtual machine in VNet-A needs to communicate with a virtual machine in VNet-C. What must be done to enable this connectivity?",
+      "correct_answer": "A",
+      "user_answer": "A",
+      "correct": true,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:47:18.600525",
+      "topic_id": "virtual_networks",
+      "topic_name": "Virtual Networks",
+      "question": "A company has three Azure Virtual Networks: VNet-A, VNet-B, and VNet-C. VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. A VM in VNet-A needs to communicate with a VM in VNet-C. What must be done to enable this communication?",
+      "correct_answer": "A",
+      "user_answer": "D",
+      "correct": false,
+      "difficulty": "medium"
+    },
+    {
+      "timestamp": "2026-04-20T12:47:56.553969",
+      "topic_id": "network_security_groups",
+      "topic_name": "Network Security Groups",
+      "question": "An administrator removes an NSG rule that was allowing inbound SSH traffic (port 22) to a subnet. A developer currently has an active SSH session to a VM in that subnet. What happens to the developer's session immediately after the rule is removed?",
+      "correct_answer": "B",
+      "user_answer": "B",
+      "correct": true,
+      "difficulty": "medium"
     }
   ],
   "weak_areas": [],
-  "total_questions_answered": 4,
-  "total_correct": 3
+  "total_questions_answered": 7,
+  "total_correct": 5
 }

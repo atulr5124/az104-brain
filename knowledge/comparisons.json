@@ -167,6 +167,61 @@
       ],
       "memory_tip": "VNet = the CITY (layout, roads, districts); NSG = the CHECKPOINT GUARD (checks your ID at each gate). You build the city first, then post guards where needed.",
       "generated_at": "2026-04-20T12:24:53.796156"
+    },
+    {
+      "topic_a": "Virtual Networks",
+      "topic_b": "Azure Firewall",
+      "one_line_distinction": "A VNet is the private network infrastructure where resources live; Azure Firewall is a stateful security appliance that inspects and controls traffic flowing through that infrastructure.",
+      "analogy": "A VNet is like the roads and neighborhoods in a city \u2014 it defines where things are and how they connect. Azure Firewall is like a security checkpoint at the city gates that inspects every vehicle entering, leaving, or moving between districts.",
+      "key_differences": [
+        {
+          "dimension": "Primary purpose",
+          "topic_a": "Provides isolation, connectivity, and IP address space for Azure resources",
+          "topic_b": "Inspects and filters network traffic using stateful L3\u2013L7 rules"
+        },
+        {
+          "dimension": "Traffic awareness",
+          "topic_a": "NSGs within VNet are stateless \u2014 return traffic needs explicit allow rules",
+          "topic_b": "Fully stateful \u2014 tracks connection state, return traffic is automatically permitted"
+        },
+        {
+          "dimension": "OSI layer",
+          "topic_a": "NSGs operate at L3/L4 (IP, port, protocol)",
+          "topic_b": "Operates at L3\u2013L7 including FQDNs, URLs, and application protocols"
+        },
+        {
+          "dimension": "Scope",
+          "topic_a": "Regional boundary for resource deployment; peered VNets extend reach",
+          "topic_b": "Centralized appliance managing traffic across subnets, VNets, or entire subscriptions via Firewall Manager"
+        },
+        {
+          "dimension": "Threat intelligence",
+          "topic_a": "No built-in threat intelligence; NSGs only filter by IP/port rules you define",
+          "topic_b": "Built-in Microsoft threat intelligence feeds; Premium adds IDPS with 67,000+ signatures"
+        },
+        {
+          "dimension": "Cost",
+          "topic_a": "VNet itself is free; charges apply to gateways, public IPs, etc.",
+          "topic_b": "Paid service billed by deployment hours and data processed"
+        },
+        {
+          "dimension": "IDPS capability",
+          "topic_a": "None",
+          "topic_b": "Available in Premium SKU \u2014 detects malware, phishing, coin mining, Trojans"
+        }
+      ],
+      "when_to_use_a": "Always \u2014 every Azure workload needs a VNet for private connectivity, isolation, and IP address management. It is the foundational networking primitive, not an optional security add-on.",
+      "when_to_use_b": "When you need centralized, stateful inspection of traffic across multiple subnets or VNets, FQDN/URL filtering, threat intelligence blocking, or IDPS \u2014 especially for hub-spoke architectures or compliance-heavy environments.",
+      "exam_traps": [
+        "NSGs are NOT stateful \u2014 Azure Firewall IS stateful. Exam questions about 'stateful firewall as a service' point to Azure Firewall, not NSGs.",
+        "Azure Firewall Premium is differentiated by IDPS (intrusion detection/prevention), not just higher throughput \u2014 if the question mentions signature-based detection or malware blocking, the answer is Premium.",
+        "Basic SKU supports Threat Intelligence in alert-only mode, NOT block mode \u2014 a question about blocking known malicious IPs requires Standard or Premium.",
+        "You can have BOTH NSGs and Azure Firewall active simultaneously \u2014 they are complementary, not mutually exclusive. NSGs filter at the subnet/NIC level; Firewall inspects at a centralized choke point.",
+        "Azure Firewall Manager manages firewall policies across subscriptions \u2014 it is NOT Azure Monitor or a VNet-level concept.",
+        "Forcing all traffic through Azure Firewall requires a Route Table (UDR) with 0.0.0.0/0 pointing to the firewall's private IP \u2014 the firewall does not intercept traffic automatically."
+      ],
+      "memory_tip": "VNet = the city (roads, zones, neighborhoods). Firewall = the armed checkpoint at the gate. You need both: the city to exist and the checkpoint to stay safe.",
+      "generated_at": "2026-04-20T12:48:44.700418"
     }
   ]
 }
