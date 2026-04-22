@@ -1,14 +1,14 @@
 {
-  "total_cost_usd": 0.102531,
-  "total_calls": 3,
-  "total_input_tokens": 6,
-  "total_output_tokens": 1590,
+  "total_cost_usd": 0.145467,
+  "total_calls": 4,
+  "total_input_tokens": 8,
+  "total_output_tokens": 2071,
   "by_operation": {
     "generate_question": {
-      "calls": 3,
-      "cost_usd": 0.102531,
-      "total_tokens": 1596
+      "calls": 4,
+      "cost_usd": 0.145467,
+      "total_tokens": 2079
     }
   },
-  "last_updated": "2026-04-20T18:42:43.204931"
+  "last_updated": "2026-04-22T18:51:24.827302"
 }
